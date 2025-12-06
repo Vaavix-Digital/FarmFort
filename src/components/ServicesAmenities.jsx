@@ -1,6 +1,7 @@
 
 
 import React from "react";
+import './ServicesAmenities.css';
 
 const ServicesAmenities = () => {
   const amenities = [
@@ -141,7 +142,8 @@ const ServicesAmenities = () => {
           {amenities.map((item, index) => (
             <div
               key={index}
-              className="bg-white p-4 w-full flex flex-col items-center justify-center shadow-md border border-gray-200 hover:bg-[#D2A07F] hover:text-white hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              className="bg-white p-4 w-full flex flex-col items-center justify-center shadow-md border border-gray-200 hover:bg-[#D2A07F] hover:text-white hover:shadow-lg transition-all duration-300 cursor-pointer group fade-in-card"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
               <div className="mb-2">

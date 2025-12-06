@@ -1,5 +1,61 @@
 
+import { useEffect, useRef } from 'react';
+import './AboutAquila.css';
+
 const AboutAquila = () => {
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const founderNameRef = useRef(null);
+  const founderTitleRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const animationClass = entry.target.getAttribute('data-animation');
+            if (animationClass) {
+              // Remove any existing animation classes first
+              const classes = animationClass.split(' ');
+              entry.target.classList.remove(...classes);
+              // Force reflow to restart animation if needed
+              void entry.target.offsetWidth;
+              // Add the animation classes
+              entry.target.classList.add(...classes);
+            }
+          }
+        });
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is in view
+      }
+    );
+
+    const elements = [
+      { ref: headingRef, animation: 'animate-slide-up' },
+      { ref: paragraphRef, animation: 'animate-slide-in-right' },
+      { ref: founderNameRef, animation: 'animate-slide-in-right animate-delay-100' },
+      { ref: founderTitleRef, animation: 'animate-slide-in-right animate-delay-200' }
+    ];
+
+    const elementRefs = [];
+
+    elements.forEach(({ ref, animation }) => {
+      if (ref.current) {
+        ref.current.setAttribute('data-animation', animation);
+        observer.observe(ref.current);
+        elementRefs.push(ref.current);
+      }
+    });
+
+    return () => {
+      elementRefs.forEach(element => {
+        observer.unobserve(element);
+      });
+      observer.disconnect();
+    };
+  }, []);
   return (
     <div className="w-full h-auto">
       {/* Background Image */}
@@ -30,7 +86,10 @@ const AboutAquila = () => {
             </p>
           </div>
 
-          <h1 className="font-gilda text-2xl md:text-3xl lg:text-4xl font-semibold text-black mb-6">
+          <h1 
+            ref={headingRef}
+            className="font-gilda text-2xl md:text-3xl lg:text-4xl font-semibold text-black mb-6 opacity-0"
+          >
             Where Luxury Meets <br className="hidden sm:block" />
             <span className="sm:inline">Personalized Hospitality</span>
           </h1>
@@ -47,11 +106,25 @@ const AboutAquila = () => {
         {/* Bottom Right Content - Full width on mobile, half on md+ */}
         <div className="absolute bottom-0 right-0 w-full md:w-1/2 lg:w-2/5 h-auto md:h-1/3 bg-white p-6 md:p-8 z-10">
           <div className=" border-gray-100 pt-4 sm:pt-6">
-            <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 Roboto">
+            <p 
+              ref={paragraphRef}
+              className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 Roboto opacity-0"
+            >
               Aquila is a haven of refined luxury, where timeless elegance meets modern sophistication. Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and an ambiance of serenity.
             </p>
-            <p className="text-[#056839] text-base sm:text-lg font-medium">Baburaj Melethara</p>
-            <p className="text-xs sm:text-sm text-gray-500 text['Roboto']">Founder of Farmfort</p>
+            <p 
+              ref={founderNameRef}
+              className="text-[#056839] text-base sm:text-lg font-medium opacity-0"
+            >
+              Baburaj Melethara
+            </p>
+            <p 
+              ref={founderTitleRef}
+              className="text-xs sm:text-sm text-gray-500 opacity-0"
+              style={{ fontFamily: 'Roboto' }}
+            >
+              Founder of Farmfort
+            </p>
           </div>
         </div>
       </div>

@@ -60,11 +60,12 @@ const BookingForm = () => {
               opacity: 1, 
               y: 0,
               transition: { 
-                duration: 0.6,
-                ease: [0.16, 0.77, 0.47, 0.97]
+                duration: 0.9,
+                ease: [0.16, 0.77, 0.47, 0.97],
+                delay: 0.1
               }
             }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-30px" }}
           >
             {/* First Row */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">

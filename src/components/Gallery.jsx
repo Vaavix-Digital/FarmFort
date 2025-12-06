@@ -112,7 +112,7 @@ const Gallery = () => {
           >
             {/* Column 1 - Tall image spanning 2 rows */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer md:row-span-2"
+              className="relative overflow-hidden shadow-lg group cursor-pointer md:row-span-2"
               variants={firstImage}
             >
               <img
@@ -125,7 +125,7 @@ const Gallery = () => {
 
             {/* Column 2 Row 1 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={item}
             >
               <img
@@ -138,7 +138,7 @@ const Gallery = () => {
 
             {/* Column 3 Row 1 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={thirdImage}
             >
               <img
@@ -151,7 +151,7 @@ const Gallery = () => {
 
             {/* Column 2 Row 2 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={item}
             >
               <img
@@ -164,7 +164,7 @@ const Gallery = () => {
 
             {/* Column 3 Row 2 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={item}
             >
               <img
@@ -177,7 +177,7 @@ const Gallery = () => {
 
             {/* Column 1 Row 3 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={item}
             >
               <img
@@ -190,7 +190,7 @@ const Gallery = () => {
 
             {/* Column 2 Row 3 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={item}
             >
               <img
@@ -203,7 +203,7 @@ const Gallery = () => {
 
             {/* Column 3 Row 3 - Regular */}
             <motion.div 
-              className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer aspect-[4/3]"
+              className="relative overflow-hidden shadow-lg group cursor-pointer aspect-[4/3]"
               variants={item}
             >
               <img

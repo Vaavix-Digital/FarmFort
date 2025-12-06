@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,6 +42,31 @@ const Testimonials = () => {
   };
 
   const currentTestimonial = testimonials[currentIndex];
+  
+  // Animation variants for the testimonial content
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3  // Slight delay to ensure heading appears first
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 0.77, 0.47, 0.97]
+      }
+    },
+    exit: { opacity: 0, y: -20 }
+  };
 
   return (
     <section 
@@ -84,44 +110,74 @@ const Testimonials = () => {
           </p>
 
           {/* Main Title */}
-          {/* Main Title */}
-          <h2 className="font-gilda text-4xl font-semibold text-white mb-12 md:mb-20">
-            Experience Our World In Pictures
-          </h2>
-
-          {/* Profile Section */}
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/40 flex-shrink-0 bg-gray-100">
-              <img 
-                src={process.env.PUBLIC_URL + currentTestimonial.image}
-                alt={currentTestimonial.name}
-                className="w-full h-full object-cover"
-                onError={handleImageError}
-                loading="lazy"
-              />
-            </div>
-            <div className="text-left">
-              <h3 className="text-white font-gilda text-lg md:text-xl">
-                {currentTestimonial.name}
-              </h3>
-              <p className="text-white/80 text-xs md:text-sm font-['Roboto']">
-                {currentTestimonial.designation}
-              </p>
-            </div>
-          </div>
-
-          {/* Testimonial Text */}
-          <p 
-            className="text-white max-w-5xl mx-auto mb-8 leading-relaxed"
-            style={{ 
-              fontFamily: 'Georgia, "Times New Roman", serif',
-              fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
-              lineHeight: '1.8',
-              fontStyle: 'italic'
+          <motion.h2 
+            className="font-gilda text-4xl font-semibold text-white mb-12 md:mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { 
+                duration: 0.8,
+                ease: [0.16, 0.77, 0.47, 0.97]
+              }
             }}
+            viewport={{ once: true }}
           >
-            {currentTestimonial.text}
-          </p>
+            Experience Our World In Pictures
+          </motion.h2>
+
+          {/* Animated Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              className="w-full"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={containerVariants}
+            >
+              {/* Profile Section */}
+              <motion.div 
+                className="flex items-center justify-center gap-4 mb-6"
+                variants={itemVariants}
+              >
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/40 flex-shrink-0 bg-gray-100">
+                  <img 
+                    src={process.env.PUBLIC_URL + currentTestimonial.image}
+                    alt={currentTestimonial.name}
+                    className="w-full h-full object-cover"
+                    onError={handleImageError}
+                    loading="lazy"
+                  />
+                </div>
+                <motion.div 
+                  className="text-left"
+                  variants={itemVariants}
+                >
+                  <h3 className="text-white font-gilda text-lg md:text-xl">
+                    {currentTestimonial.name}
+                  </h3>
+                  <p className="text-white/80 text-xs md:text-sm font-['Roboto']">
+                    {currentTestimonial.designation}
+                  </p>
+                </motion.div>
+              </motion.div>
+
+              {/* Testimonial Text */}
+              <motion.p 
+                className="text-white max-w-5xl mx-auto mb-8 leading-relaxed"
+                style={{ 
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
+                  lineHeight: '1.8',
+                  fontStyle: 'italic'
+                }}
+                variants={itemVariants}
+              >
+                {currentTestimonial.text}
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Navigation Arrows */}
           <div className="flex items-center justify-center gap-4 mt-8">

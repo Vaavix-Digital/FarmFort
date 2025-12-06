@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Insights = () => {
   const articles = [
@@ -54,9 +55,21 @@ const Insights = () => {
           </p>
 
           {/* Main Title */}
-          <h2 className="font-gilda text-4xl font-semibold text-black mb-6">
+          <motion.h2 
+            className="font-gilda text-4xl font-semibold text-black mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { 
+                duration: 0.8,
+                ease: [0.16, 0.77, 0.47, 0.97]
+              }
+            }}
+            viewport={{ once: true }}
+          >
             Explore Our Archive Of Luxury Travel Ideas And Tips
-          </h2>
+          </motion.h2>
 
           {/* Descriptive Paragraph */}
           <p 
@@ -73,8 +86,21 @@ const Insights = () => {
 
         {/* Article Previews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {articles.map((article) => (
-            <div key={article.id} className="group">
+          {articles.map((article, index) => (
+            <motion.div 
+              key={article.id} 
+              className="group"
+              initial={{ opacity: 0 }}
+              whileInView={{ 
+                opacity: 1, 
+                transition: { 
+                  duration: 1.2,  // Slower fade duration
+                  delay: index * 0.2,  // Increased delay between items
+                  ease: [0.25, 0.1, 0.25, 1]  // Smoother easing curve
+                }
+              }}
+              viewport={{ once: true, margin: "-20px" }}
+            >
               {/* Article Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -104,7 +130,7 @@ const Insights = () => {
                   {article.buttonText}
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 
 const FAQContact = () => {
   const [openIndex, setOpenIndex] = useState(0);
@@ -47,7 +48,19 @@ const FAQContact = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Left Column - FAQ Section */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ 
+              opacity: 1, 
+              x: 0,
+              transition: { 
+                duration: 0.8,
+                ease: [0.16, 0.77, 0.47, 0.97],
+                delay: 0.1
+              }
+            }}
+            viewport={{ once: true, margin: "-30px" }}
+          >
             <div className="space-y-3">
               {faqs.map((faq, index) => (
                 <div key={index} className="rounded overflow-hidden">
@@ -99,7 +112,7 @@ const FAQContact = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Introduction and Contact */}
           <div className="flex flex-col">
@@ -133,15 +146,26 @@ const FAQContact = () => {
             </p>
 
             {/* Main Title */}
-            <h2 
+            <motion.h2 
               className="text-black font-semibold mb-6 leading-tight"
               style={{ 
                 fontFamily: 'Gilda Display, serif',
                 fontSize: 'clamp(1.75rem, 4vw, 2.5rem)'
               }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.8,
+                  ease: [0.16, 0.77, 0.47, 0.97],
+                  delay: 0.2
+                }
+              }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               Quick Answers For A Seamless Experience
-            </h2>
+            </motion.h2>
 
             {/* Description */}
             <p 
