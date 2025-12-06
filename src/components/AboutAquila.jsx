@@ -57,15 +57,15 @@ const AboutAquila = () => {
     };
   }, []);
   return (
-    <div className="w-full h-auto">
+    <div className="w-full">
       {/* Background Image */}
       <div
-        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[500px] sm:h-[600px] md:h-[700px] lg:h-[850px]"
+        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[600px]"
         style={{ backgroundImage: "url('/Room1.jpeg')" }}
       >
         {/* Top Left Content - Full width on mobile, half on md+ */}
-        <div className="absolute top-0 left-0 w-full md:w-1/2 h-auto md:h-1/2 bg-white p-6 md:p-8 lg:p-12 z-10">
-          <div className="flex items-center gap-3 mb-6">
+        <div className="absolute top-0 left-0 w-full md:w-1/2 h-1/2 bg-white p-4 sm:p-6 z-10">
+          <div className="flex items-center gap-3 mb-3 sm:mb-4">
             <div className="w-10 h-10 rounded-full border-2 border-[#D2A07F] flex items-center justify-center">
               <svg 
                 className="w-6 h-6 text-[#D2A07F]" 
@@ -88,13 +88,13 @@ const AboutAquila = () => {
 
           <h1 
             ref={headingRef}
-            className="font-gilda text-2xl md:text-3xl lg:text-4xl font-semibold text-black mb-6 opacity-0"
+            className="font-gilda text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-black mb-2 sm:mb-4 opacity-0"
           >
             Where Luxury Meets <br className="hidden sm:block" />
             <span className="sm:inline">Personalized Hospitality</span>
           </h1>
 
-          <div className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed space-y-3 sm:space-y-4">
+          <div className="text-gray-700 text-[11px] xs:text-xs sm:text-[13px] leading-snug">
             <p>
               Quam auctor vulputate rutrum sapien euismod et veluipat curabitur sit. Ultrices velit sagittis, laboris
               dapibus venenatis convallis. Nulla platae pulvinar justo plateu tempus at elementum.
@@ -104,11 +104,11 @@ const AboutAquila = () => {
         </div>
 
         {/* Bottom Right Content - Full width on mobile, half on md+ */}
-        <div className="absolute bottom-0 right-0 w-full md:w-1/2 lg:w-2/5 h-auto md:h-1/3 bg-white p-6 md:p-8 z-10">
-          <div className=" border-gray-100 pt-4 sm:pt-6">
+        <div className="absolute bottom-0 right-0 w-full md:w-1/2 lg:w-2/5 h-1/3 bg-white p-4 sm:p-6 z-10">
+          <div className="pt-1">
             <p 
               ref={paragraphRef}
-              className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 Roboto opacity-0"
+              className="text-gray-600 text-[11px] xs:text-xs sm:text-[13px] leading-snug mb-2 sm:mb-3 Roboto opacity-0"
             >
               Aquila is a haven of refined luxury, where timeless elegance meets modern sophistication. Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and an ambiance of serenity.
             </p>
