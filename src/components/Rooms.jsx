@@ -4,7 +4,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { FaWifi, FaCoffee, FaConciergeBell, FaSpa, FaSwimmingPool, FaBath } from "react-icons/fa";
 
 const Rooms = () => {
-  const [selectedRoom, setSelectedRoom] = useState("single");
+  const [selectedRoom, setSelectedRoom] = useState("deluxe");
 
   const roomTypes = [
     { id: "deluxe", name: "Deluxe Room" },
@@ -69,9 +69,14 @@ const Rooms = () => {
     
     <div className="min-h-screen bg-white font-['Roboto']">
       <div className="pt-16 pb-10 text-center px-4">
-        <div className="flex justify-center mb-4">
-          <div className="w-10 h-10 rounded-full border-2 border-[#D2A07F] flex items-center justify-center">
-            <svg className="w-6 h-6 text-[#D2A07F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="flex flex-col items-center justify-center mb-6">
+          <div className="w-10 h-10 rounded-full border-2 border-[#D2A07F] flex items-center justify-center mb-3">
+            <svg 
+              className="w-6 h-6 text-[#D2A07F]" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -80,10 +85,10 @@ const Rooms = () => {
               />
             </svg>
           </div>
+          <p className="text-[#D2A07F] font-semibold tracking-wide text-base md:text-lg font-['Roboto']">
+            Rooms
+          </p>
         </div>
-        <p className="text-[#056839] font-normal tracking-wide mb-3 text-base md:text-lg font-['Roboto']">
-          Rooms
-        </p>
         <motion.h2 
           className="font-gilda text-4xl font-semibold text-black mb-6"
           ref={ref}
@@ -113,7 +118,7 @@ const Rooms = () => {
               key={room.id}
               onClick={() => setSelectedRoom(room.id)}
               className={`group flex items-center py-3 w-full transition-all text-left pl-8 relative ${
-                selectedRoom === room.id
+                selectedRoom === room.id || room.id === "deluxe"
                   ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#056839] after:transition-all"
                   : "text-gray-700 hover:text-[#056839]"
               }`}
@@ -121,7 +126,7 @@ const Rooms = () => {
               <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 flex items-center justify-center">
                 <svg 
                   className={`w-5 h-5 ${
-                    selectedRoom === room.id ? "text-[#056839]" : "text-gray-300"
+                    selectedRoom === room.id || room.id === "deluxe" ? "text-[#056839]" : "text-gray-300"
                   }`}
                   viewBox="0 0 24 24" 
                   fill="none"
@@ -160,7 +165,7 @@ const Rooms = () => {
 
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
-                <span className="bg-[#056839] p-2 rounded-full flex items-center justify-center h-9 w-9">
+                <span className="bg-[#D2A07F] p-2 rounded-full flex items-center justify-center h-9 w-9">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"></path>
                     <path d="M21 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"></path>
@@ -172,7 +177,7 @@ const Rooms = () => {
                 <span className="text-gray-700 whitespace-nowrap">{details.beds} Beds</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="bg-[#056839] p-2 rounded-full flex items-center justify-center h-9 w-9">
+                <span className="bg-[#D2A07F] p-2 rounded-full flex items-center justify-center h-9 w-9">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="9" y1="3" x2="9" y2="21"></line>
@@ -181,7 +186,7 @@ const Rooms = () => {
                 <span className="text-gray-700 whitespace-nowrap">{details.sqft}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="bg-[#056839] p-2 rounded-full flex items-center justify-center h-9 w-9">
+                <span className="bg-[#D2A07F] p-2 rounded-full flex items-center justify-center h-9 w-9">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
@@ -197,27 +202,27 @@ const Rooms = () => {
               <h3 className="text-xl font-medium text-gray-900 mb-3">Facilities</h3>
               <ul className="grid grid-cols-2 gap-3 text-gray-700 text-base">
                 <li className="flex items-center space-x-2">
-                  <FaWifi className="text-[#056839] text-lg" />
+                  <FaWifi className="text-[#D2A07F] text-lg" />
                   <span>Free Wifi</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <FaCoffee className="text-[#056839] text-lg" />
+                  <FaCoffee className="text-[#D2A07F] text-lg" />
                   <span>Free Breakfast</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <FaConciergeBell className="text-[#056839] text-lg" />
+                  <FaConciergeBell className="text-[#D2A07F] text-lg" />
                   <span>Room Service</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <FaSpa className="text-[#056839] text-lg" />
+                  <FaSpa className="text-[#D2A07F] text-lg" />
                   <span>Spa & Wellness</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <FaSwimmingPool className="text-[#056839] text-lg" />
+                  <FaSwimmingPool className="text-[#D2A07F] text-lg" />
                   <span>Swimming Pool</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <FaBath className="text-[#056839] text-lg" />
+                  <FaBath className="text-[#D2A07F] text-lg" />
                   <span>Shower Bathtub</span>
                 </li>
               </ul>

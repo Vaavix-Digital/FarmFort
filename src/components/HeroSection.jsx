@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HeroSection = () => {
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const heroImages = [
     '/Toppic.jpeg',
@@ -37,7 +38,7 @@ const HeroSection = () => {
       </div>
 
       {/* Navigation Bar with semi-transparent background for better readability */}
-      <nav className="absolute top-0 left-0 right-0 z-20 pt-6 md:pt-8 lg:pt-10 bg-black/30 backdrop-blur-sm">
+      <nav className="absolute top-0 left-0 right-0 z-20 pt-6 md:pt-8 lg:pt-10">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -82,8 +83,20 @@ const HeroSection = () => {
               </a>
             </div>
 
-            {/* View Rooms Button */}
-            <div className="flex-shrink-0">
+            {/* View Rooms and Mobile Menu Button */}
+            <div className="flex-shrink-0 flex items-center gap-2">
+              {/* Mobile Menu Button */}
+              <button 
+                className="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                <span className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              </button>
+              
+              {/* View Rooms Button */}
               <button className="bg-transparent border-2 border-white/40 text-white px-4 py-2 md:px-6 md:py-2.5 rounded text-sm xl:text-base font-semibold hover:bg-white/15 hover:border-white/60 transition-all backdrop-blur-sm shadow-lg">
                 View Rooms
               </button>
@@ -91,6 +104,33 @@ const HeroSection = () => {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      <div className={`lg:hidden fixed top-20 left-0 right-0 bg-black/90 backdrop-blur-md z-10 transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-96 py-4' : 'max-h-0 py-0'}`}>
+        <div className="container mx-auto px-4 flex flex-col space-y-4">
+          <a href="#home" className="text-white text-lg py-2 hover:text-amber-400 transition-colors">Home</a>
+          <a href="#about" className="text-white text-lg py-2 hover:text-amber-400 transition-colors">About</a>
+          <a href="#rooms" className="text-white text-lg py-2 hover:text-amber-400 transition-colors flex items-center justify-between">
+            Rooms
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#pages" className="text-white text-lg py-2 hover:text-amber-400 transition-colors flex items-center justify-between">
+            Pages
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#blog" className="text-white text-lg py-2 hover:text-amber-400 transition-colors flex items-center justify-between">
+            Blog
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#contact" className="text-white text-lg py-2 hover:text-amber-400 transition-colors">Contact</a>
+        </div>
+      </div>
 
       {/* Text Overlay - Positioned in lower-left */}
       <div className="relative z-10 h-full flex items-end">
@@ -104,7 +144,7 @@ const HeroSection = () => {
               letterSpacing: '0.02em'
             }}
           >
-            Discover Aquila
+            Discover FarmFort
           </h1>
           
           {/* Subtitle - Slightly smaller elegant serif */}
