@@ -106,54 +106,57 @@ const Rooms = () => {
       </div>
 
       <motion.div 
-        className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-10"
+        className="max-w-7xl mx-auto px-4 py-10 flex flex-col gap-10"
         ref={ref}
         variants={slideUp}
         initial="hidden"
         animate={controls}
       >
-        <div className="md:col-span-1 space-y-3">
-          {roomTypes.map((room) => (
-            <button
-              key={room.id}
-              onClick={() => setSelectedRoom(room.id)}
-              className={`group flex items-center py-3 w-full transition-all text-left pl-8 relative ${
-                selectedRoom === room.id || room.id === "deluxe"
-                  ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-[0.5px] after:bg-[#056839] after:transition-all"
-                  : "text-gray-700 hover:text-[#056839]"
-              }`}
-            >
-              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 flex items-center justify-center">
-                <svg 
-                  className={`w-5 h-5 ${
-                    selectedRoom === room.id || room.id === "deluxe" ? "text-[#056839]" : "text-gray-300"
-                  }`}
-                  viewBox="0 0 24 24" 
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </div>
-              <span className="text-base md:text-lg font-medium">
-                {room.name}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <div className="md:col-span-3 flex flex-col lg:flex-row gap-10">
-          <div className="w-full lg:w-1/2 relative h-[400px] md:h-[550px] overflow-hidden -ml-4 lg:-ml-8">
+        {/* Room Image Section */}
+        <div className="w-full">
+          <div className="relative h-[300px] md:h-[550px] overflow-hidden w-full">
             <img
               src={details.image}
               alt="room"
               className="w-full h-full object-cover"
             />
           </div>
+        </div>
+
+        {/* Room Types - Horizontal on mobile, vertical on md+ */}
+        <div className="w-full overflow-x-auto pb-2">
+          <div className="flex flex-nowrap gap-4 md:grid md:grid-cols-1 md:gap-3 w-max md:w-full">
+            {roomTypes.map((room) => (
+              <button
+                key={room.id}
+                onClick={() => setSelectedRoom(room.id)}
+                className={`flex-shrink-0 group flex items-center py-3 px-6 md:px-8 transition-all text-left relative rounded-md ${
+                  selectedRoom === room.id || room.id === "deluxe"
+                    ? "text-[#056839] font-medium bg-green-50 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-[0.5px] after:bg-[#056839] after:transition-all"
+                    : "text-gray-700 hover:text-[#056839] hover:bg-gray-50"
+                }`}
+              >
+                <div className={`mr-2 md:absolute md:left-0 md:top-1/2 md:transform md:-translate-y-1/2 w-6 h-6 flex items-center justify-center`}>
+                  <svg 
+                    className={`w-5 h-5 ${selectedRoom === room.id || room.id === "deluxe" ? "text-[#056839]" : "text-gray-300"}`}
+                    viewBox="0 0 24 24" 
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+                <span className="text-base md:text-lg font-medium whitespace-nowrap">
+                  {room.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
 
           <div className="w-full lg:w-1/2 space-y-6 pt-8">
             <div className="space-y-3 w-full pr-0 lg:pr-6">
