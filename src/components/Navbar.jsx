@@ -68,35 +68,65 @@ const Navbar = () => {
                 className="text-white focus:outline-none"
                 aria-label="Toggle menu"
               >
-                {isOpen ? (
-                  <FiX className="h-6 w-6" />
-                ) : (
-                  <FiMenu className="h-6 w-6" />
-                )}
+                <div className="space-y-1.5">
+                  <span className="block w-6 h-0.5 bg-white"></span>
+                  <span className="block w-6 h-0.5 bg-white"></span>
+                  <span className="block w-6 h-0.5 bg-white"></span>
+                </div>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="lg:hidden bg-black/95 backdrop-blur-md w-full absolute left-0 px-4 pt-2 pb-6">
-            <div className="flex flex-col space-y-4 py-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.path}
-                  className="text-white hover:text-amber-400 px-3 py-2 text-lg transition-colors duration-300"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <button className="mt-4 bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-md w-full transition-colors duration-300">
-                View Rooms
+        {/* Mobile Menu Slide-in Panel */}
+        <div className={`fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          <div className="flex flex-col h-full">
+            {/* Close Button */}
+            <div className="flex justify-end p-4">
+              <button
+                onClick={toggleMenu}
+                className="bg-[#8B5A2B] text-white w-10 h-10 flex items-center justify-center focus:outline-none"
+                aria-label="Close menu"
+              >
+                <span className="text-2xl">&times;</span>
               </button>
             </div>
+            
+            {/* Navigation Links */}
+            <nav className="flex-1 px-6 py-4 overflow-y-auto">
+              <ul className="space-y-6">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.path}
+                      className="text-gray-800 text-lg hover:text-amber-500 transition-colors duration-200 block py-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              
+              <button 
+                className="mt-8 w-full border-2 border-gray-800 text-gray-800 font-medium py-3 px-6 hover:bg-gray-100 transition-colors duration-200"
+                onClick={() => {
+                  setIsOpen(false);
+                  // Add navigation to rooms page if needed
+                }}
+              >
+                View Rooms
+              </button>
+            </nav>
           </div>
+        </div>
+        
+        {/* Overlay */}
+        {isOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={toggleMenu}
+          />
         )}
       </nav>
     </>
