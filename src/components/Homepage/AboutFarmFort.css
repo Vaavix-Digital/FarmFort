@@ -1,3 +1,16 @@
+/* Responsive Background Image */
+.about-bg-image {
+  height: 70vh;
+  min-height: 500px;
+}
+
+@media (max-width: 740px) {
+  .about-bg-image {
+    height: 70vh !important;
+    min-height: 500px !important;
+  }
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
