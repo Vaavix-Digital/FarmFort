@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'gilda': ['"Gilda Display"', 'serif'],
+        'roboto': ['Roboto', 'sans-serif'],
         'serif': ['Georgia', 'Times New Roman', 'serif'],
         'sans': ['Arial', 'Helvetica', 'sans-serif'],
       },

@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 :root {
   --font-gilda: 'Gilda Display', serif;
+  --color-primary: #C38154;
 }
 
 * {
@@ -24,3 +25,11 @@ html, body {
   overflow: hidden;
 }
 
+/* Kapakana Script Styling */
+.kapakana-script {
+  font-family: 'Dancing Script', cursive;
+  color: #0F4D2F;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1.2;
+}

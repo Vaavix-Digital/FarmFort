@@ -16,7 +16,7 @@ const Rooms = () => {
     deluxe: {
       image: "/Room2.jpeg",
       overview:
-        "Experience luxury with our deluxe room featuring premium amenities and stunning views. Perfect for those who appreciate the finer things in life.",
+        "Dignissim ullamcorper arcu quam orci ullamcorper ipsum. Felis praesent ante sagittis porta, ridiculus vehicula feugiat varius? Metus mus suspendisse, condimentum suscipit suspendisse dignissim litora curae. Sapien porttitor malesuada ullamcorper scelerisque est varius sed sagittis nisi.",
       beds: 2,
       sqft: "500 sq ft",
       capacity: "1 - 4 People",
@@ -25,7 +25,7 @@ const Rooms = () => {
     superior: {
       image: "/room3.jpeg",
       overview:
-        "Our Superior Room offers a perfect blend of comfort and style with modern amenities and elegant decor for a memorable stay.",
+        "Dignissim ullamcorper arcu quam orci ullamcorper ipsum. Felis praesent ante sagittis porta, ridiculus vehicula feugiat varius? Metus mus suspendisse, condimentum suscipit suspendisse dignissim litora curae. Sapien porttitor malesuada ullamcorper scelerisque est varius sed sagittis nisi.",
       beds: 2,
       sqft: "600 sq ft",
       capacity: "2 - 4 People",
@@ -34,7 +34,7 @@ const Rooms = () => {
     garden: {
       image: "/room3.jpeg",
       overview:
-        "Wake up to beautiful garden views in our Garden View Room. A peaceful retreat with all the modern comforts you need.",
+        "Dignissim ullamcorper arcu quam orci ullamcorper ipsum. Felis praesent ante sagittis porta, ridiculus vehicula feugiat varius? Metus mus suspendisse, condimentum suscipit suspendisse dignissim litora curae. Sapien porttitor malesuada ullamcorper scelerisque est varius sed sagittis nisi.",
       beds: 2,
       sqft: "550 sq ft",
       capacity: "2 People",
@@ -119,7 +119,7 @@ const Rooms = () => {
               onClick={() => setSelectedRoom(room.id)}
               className={`group flex items-center py-3 w-full transition-all text-left pl-8 relative ${
                 selectedRoom === room.id || room.id === "deluxe"
-                  ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#056839] after:transition-all"
+                  ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-[0.5px] after:bg-[#056839] after:transition-all"
                   : "text-gray-700 hover:text-[#056839]"
               }`}
             >
@@ -147,24 +147,24 @@ const Rooms = () => {
         </div>
 
         <div className="md:col-span-3 flex flex-col lg:flex-row gap-10">
-          <div className="w-full lg:w-[45%]">
+          <div className="w-full lg:w-1/2 relative h-[400px] md:h-[550px] overflow-hidden -ml-4 lg:-ml-8">
             <img
               src={details.image}
               alt="room"
-              className="w-full h-[320px] md:h-[450px] object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
 
-          <div className="w-full lg:w-[55%] space-y-6">
-            <div className="space-y-3 w-full pr-0 lg:pr-10">
-              <h2 className="text-2xl font-normal text-gray-900 mb-4">Room Overview</h2>
-              <p className="text-gray-600 text-base leading-relaxed">
+          <div className="w-full lg:w-1/2 space-y-6 pt-8">
+            <div className="space-y-3 w-full pr-0 lg:pr-6">
+              <h2 className="text-2xl font-normal text-gray-900 font-gilda mb-4 ">Room Overview</h2>
+              <p className="text-gray-600 text-base " style={{ fontFamily: '"Roboto", sans-serif' }}>
                 {details.overview}
               </p>
             </div>
 
-            <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap items-center gap-6">
+              <div className="flex items-center space-x-2 min-w-[120px]">
                 <span className="bg-[#D2A07F] p-2 rounded-full flex items-center justify-center h-9 w-9">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"></path>
@@ -174,18 +174,19 @@ const Rooms = () => {
                     <path d="M17 5v4"></path>
                   </svg>
                 </span>
-                <span className="text-gray-700 whitespace-nowrap">{details.beds} Beds</span>
+                <span style={{ fontFamily: '"Roboto", sans-serif' }} className="text-gray-900">{details.beds} Beds</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 min-w-[120px]">
                 <span className="bg-[#D2A07F] p-2 rounded-full flex items-center justify-center h-9 w-9">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="9" y1="3" x2="9" y2="21"></line>
+                    <line x1="9" y1="3" x2="21" y2="3"></line>
+                    <line x1="9" y1="21" x2="9" y2="3"></line>
                   </svg>
                 </span>
-                <span className="text-gray-700 whitespace-nowrap">{details.sqft}</span>
+                <span style={{ fontFamily: '"Roboto", sans-serif' }} className="text-gray-900">{details.sqft}</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 min-w-[120px]">
                 <span className="bg-[#D2A07F] p-2 rounded-full flex items-center justify-center h-9 w-9">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -194,34 +195,34 @@ const Rooms = () => {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                   </svg>
                 </span>
-                <span className="text-gray-700 whitespace-nowrap">{details.capacity}</span>
+                <span style={{ fontFamily: '"Roboto", sans-serif' }} className="text-gray-900">{details.capacity}</span>
               </div>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-xl font-medium text-gray-900 mb-3">Facilities</h3>
+              <h3 className="text-xl font-medium text-gray-900 font-gilda mb-3">Facilities</h3>
               <ul className="grid grid-cols-2 gap-3 text-gray-700 text-base">
-                <li className="flex items-center space-x-2">
-                  <FaWifi className="text-[#D2A07F] text-lg" />
+                <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
+                  <FaWifi className="text-[#D2A07F] text-lg " />
                   <span>Free Wifi</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   <FaCoffee className="text-[#D2A07F] text-lg" />
                   <span>Free Breakfast</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   <FaConciergeBell className="text-[#D2A07F] text-lg" />
                   <span>Room Service</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   <FaSpa className="text-[#D2A07F] text-lg" />
                   <span>Spa & Wellness</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   <FaSwimmingPool className="text-[#D2A07F] text-lg" />
                   <span>Swimming Pool</span>
                 </li>
-                <li className="flex items-center space-x-2">
+                <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   <FaBath className="text-[#D2A07F] text-lg" />
                   <span>Shower Bathtub</span>
                 </li>
@@ -229,8 +230,8 @@ const Rooms = () => {
             </div>
 
             <div className="flex items-center justify-between pt-3">
-              <span className="text-5xl font-black text-black">${details.price} <span className="text-2xl font-semibold text-gray-500">/ Night</span></span>
-              <button className="bg-[#056839] hover:bg-[#04502d] text-white font-['Roboto'] font-semibold py-3 px-6 transition duration-200">
+              <span className="text-5xl font-black text-black font-gilda">${details.price} <span className="text-sm font-normal text-gray-900" style={{ fontFamily: '"Roboto", sans-serif' }}>/ Night</span></span>
+              <button className="bg-[#056839] hover:bg-[#04502d] text-white  font-normal py-3 px-6 transition duration-200 "style={{ fontFamily: '"Roboto", sans-serif' }}>
                 Book Now
               </button>
             </div>

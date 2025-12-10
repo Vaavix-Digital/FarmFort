@@ -1,8 +1,8 @@
 
 import { useEffect, useRef } from 'react';
-import './AboutAquila.css';
+import './AboutFarmFort.css';
 
-const AboutAquila = () => {
+const AboutFarmFort = () => {
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
   const founderNameRef = useRef(null);
@@ -82,7 +82,7 @@ const AboutAquila = () => {
               </svg>
             </div>
             <p className="text-[#D2A07F] font-semibold  tracking-wide text-base md:text-lg font-['Roboto']">
-              About Farmfort
+              About FarmFort
             </p>
           </div>
 
@@ -110,7 +110,7 @@ const AboutAquila = () => {
               ref={paragraphRef}
               className="text-gray-600 text-[11px] xs:text-xs sm:text-[13px] leading-snug mb-2 sm:mb-3 Roboto opacity-0"
             >
-              Aquila is a haven of refined luxury, where timeless elegance meets modern sophistication. Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and an ambiance of serenity.
+              FarmFort is a haven of refined luxury, where timeless elegance meets modern sophistication. Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and an ambiance of serenity.
             </p>
             <p 
               ref={founderNameRef}
@@ -123,7 +123,7 @@ const AboutAquila = () => {
               className="text-xs sm:text-sm text-gray-500 opacity-0"
               style={{ fontFamily: 'Roboto' }}
             >
-              Founder of Farmfort
+              Founder of FarmFort
             </p>
           </div>
         </div>
@@ -135,5 +135,5 @@ const AboutAquila = () => {
   );
 };
 
-export default AboutAquila;
+export default AboutFarmFort;
 

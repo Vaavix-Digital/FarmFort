@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.kapakana-script {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  color: #2d3748;
+  opacity: 0.95;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.03em;
+  transform: translateY(2px);
+}
 
 /* Reset and base styles */
 *,
