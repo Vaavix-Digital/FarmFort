@@ -58,7 +58,7 @@ const AboutFarmFort = () => {
 
       {/* Background Image - FIXED */}
       <div
-        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[70vh] min-h-[500px] lg:min-h-[800px]"
+        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[90vh] min-h-[800px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px]"
         style={{
           backgroundImage: "url('/Room1.jpeg')",
           backgroundSize: 'cover',
@@ -97,11 +97,10 @@ const AboutFarmFort = () => {
 
           <h1 
             ref={headingRef}
-            className="font-gilda text-2xl sm:text-3xl font-semibold text-black mb-4 sm:mb-6 opacity-0 leading-tight"
+            className="font-gilda text-2xl sm:text-3xl md:text-4xl font-semibold text-black mb-4 sm:mb-6 opacity-0 leading-tight"
           >
-            <span className="whitespace-nowrap">Where Luxury Meets</span>
-            <br className="hidden lg:block" />
-            <span className="whitespace-nowrap">Personalized Hospitality</span>
+            <span className="block">Where Luxury Meets</span>
+            <span className="block">Personalized Hospitality</span>
           </h1>
 
           <p className="text-gray-700 text-base sm:text-base leading-relaxed" style={{ fontFamily: '"Roboto", sans-serif' }}>
