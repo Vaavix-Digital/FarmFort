@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './AboutFarmFort.css';
 
 const AboutFarmFort = () => {
@@ -6,6 +6,21 @@ const AboutFarmFort = () => {
   const paragraphRef = useRef(null);
   const founderNameRef = useRef(null);
   const founderTitleRef = useRef(null);
+  const [bgPosition, setBgPosition] = useState('center');
+
+  useEffect(() => {
+    const updateBgPosition = () => {
+      if (window.innerWidth < 768) {
+        setBgPosition('center 75%');
+      } else {
+        setBgPosition('center');
+      }
+    };
+
+    updateBgPosition();
+    window.addEventListener('resize', updateBgPosition);
+    return () => window.removeEventListener('resize', updateBgPosition);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,7 +77,7 @@ const AboutFarmFort = () => {
         style={{
           backgroundImage: "url('/Room1.jpeg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: bgPosition,
           backgroundAttachment: 'fixed',
           WebkitBackgroundAttachment: 'fixed',
           transform: 'translate3d(0,0,0)',
