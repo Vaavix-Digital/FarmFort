@@ -43,7 +43,7 @@ const HeroSection = () => {
 
       {/* Text Overlay - Positioned in lower-left */}
       <div className="absolute bottom-0 left-0 right-0 z-10 pt-8 md:pt-16">
-        <div className="w-full pb-16 md:pb-20 pl-6 md:pl-12 lg:pl-16 xl:pl-24">
+        <div className="w-full pb-16 md:pb-20 px-6 md:pl-12 lg:pl-16 xl:pl-24">
           <h1 
             className="text-white mb-3 md:mb-5 font-normal leading-tight"
             style={{ 
