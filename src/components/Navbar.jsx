@@ -1,16 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import React, { useState, useEffect, useRef } from 'react';
+import { FiMenu, FiX, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const dropdownRef = useRef(null);
+
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Rooms', path: '/rooms' },
-    { name: 'Pages', path: '/pages' },
-    { name: 'Blog', path: '/blog' },
+    { 
+      name: 'Rooms', 
+      path: '/rooms',
+      dropdown: [
+        { name: 'Room Grid', path: '/rooms/grid' },
+        { name: 'Room List', path: '/rooms/list' },
+        { name: 'Room Details', path: '/rooms/details' },
+        { name: 'Booking', path: '/booking' }
+      ]
+    },
+    { 
+      name: 'Pages', 
+      path: '/pages',
+      dropdown: [
+        { name: 'About Us', path: '/about' },
+        { name: 'Services', path: '/services' },
+        { name: 'Gallery', path: '/gallery' },
+        { name: 'Team', path: '/team' },
+        { name: 'FAQ', path: '/faq' },
+        { name: '404', path: '/404' }
+      ]
+    },
+    { 
+      name: 'Blog', 
+      path: '/blog',
+      dropdown: [
+        { name: 'Blog Grid', path: '/blog/grid' },
+        { name: 'Blog List', path: '/blog/list' },
+        { name: 'Blog Single', path: '/blog/single' }
+      ]
+    },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const toggleDropdown = (itemName) => {
+    setOpenDropdown(openDropdown === itemName ? null : itemName);
+  };
+
+  const closeAllDropdowns = () => {
+    setOpenDropdown(null);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeAllDropdowns();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,7 +83,7 @@ const Navbar = () => {
               <a href="/" className="flex items-center">
                 <div className="bg-transparent">
                   <img 
-                    src="/Logo.png" 
+                    src="/logo1.png" 
                     alt="AQUILA Luxury Hotel & Resort" 
                     className="h-10 w-auto mix-blend-multiply"
                   />
@@ -40,23 +92,45 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Menu - Centered */}
-            <div className="hidden lg:flex items-center justify-center flex-1">
-              <div className="flex space-x-8">
+            <div className="hidden lg:flex items-center justify-center flex-1" style={{ fontFamily: '"Roboto", sans-serif' }}>
+              <div className="flex space-x-8 relative" ref={dropdownRef}>
                 {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    className="text-white hover:text-amber-400 transition-colors duration-300 font-medium"
-                  >
-                    {item.name}
-                  </a>
+                  <div key={item.name} className="relative group">
+                    <button
+                      onClick={() => item.dropdown ? toggleDropdown(item.name) : window.location.href = item.path}
+                      className="text-white hover:text-amber-400 transition-colors duration-300 font-medium flex items-center"
+                    >
+                      {item.name}
+                      {item.dropdown && (
+                        <span className="ml-1">
+                          {openDropdown === item.name ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
+                        </span>
+                      )}
+                    </button>
+                    {item.dropdown && (
+                      <div 
+                        className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 transition-all duration-300 ${openDropdown === item.name ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                      >
+                        {item.dropdown.map((subItem) => (
+                          <a
+                            key={subItem.name}
+                            href={subItem.path}
+                            className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200"
+                            onClick={closeAllDropdowns}
+                          >
+                            {subItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
             
             {/* View Rooms Button - Right Aligned */}
             <div className="hidden lg:block">
-              <button className="bg-transparent hover:bg-white/10 border-2 border-white text-white px-6 py-1.5 rounded-md transition-colors duration-300">
+              <button className="bg-transparent hover:bg-white/10 border border-white text-white px-8 py-3 rounded-none transition-colors duration-300 text-base" style={{ fontFamily: '"Roboto", sans-serif' }}>
                 View Rooms
               </button>
             </div>
@@ -65,13 +139,14 @@ const Navbar = () => {
             <div className="lg:hidden ml-4">
               <button
                 onClick={toggleMenu}
-                className="text-white focus:outline-none"
+                className="text-white focus:outline-none p-2"
                 aria-label="Toggle menu"
               >
-                <div className="space-y-1.5">
-                  <span className="block w-6 h-0.5 bg-white"></span>
-                  <span className="block w-6 h-0.5 bg-white"></span>
-                  <span className="block w-6 h-0.5 bg-white"></span>
+                <div className="space-y-1">
+                  <span className="block w-6 h-[1.5px] bg-white transition-all duration-300"></span>
+                  <span className="block w-5 h-[1.5px] bg-white transition-all duration-300 ml-auto"></span>
+                  <span className="block w-6 h-[1.5px] bg-white transition-all duration-300"></span>
+                  <span className="block w-4 h-[1.5px] bg-white transition-all duration-300 ml-auto"></span>
                 </div>
               </button>
             </div>
@@ -94,16 +169,48 @@ const Navbar = () => {
             
             {/* Navigation Links */}
             <nav className="flex-1 px-6 py-4 overflow-y-auto">
-              <ul className="space-y-6">
+              <ul className="space-y-2">
                 {navItems.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.path}
-                      className="text-gray-800 text-lg hover:text-amber-500 transition-colors duration-200 block py-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </a>
+                  <li key={item.name} className="border-b border-gray-100">
+                    {item.dropdown ? (
+                      <div>
+                        <button
+                          onClick={() => toggleDropdown(item.name)}
+                          className="w-full flex justify-between items-center text-gray-800 text-lg hover:text-amber-500 transition-colors duration-200 py-3"
+                        >
+                          <span>{item.name}</span>
+                          {openDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
+                        </button>
+                        {openDropdown === item.name && (
+                          <div className="pl-4 pb-2">
+                            {item.dropdown.map((subItem) => (
+                              <a
+                                key={subItem.name}
+                                href={subItem.path}
+                                className="block py-2 text-gray-600 hover:text-amber-500 transition-colors duration-200"
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  closeAllDropdowns();
+                                }}
+                              >
+                                {subItem.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <a
+                        href={item.path}
+                        className="block py-3 text-gray-800 text-lg hover:text-amber-500 transition-colors duration-200"
+                        onClick={() => {
+                          setIsOpen(false);
+                          closeAllDropdowns();
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
