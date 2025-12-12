@@ -20,7 +20,7 @@ const HeroSection = () => {
   }, [heroImages.length]);
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full h-[870px]">
       {/* Navbar */}
       <div className="absolute top-0 left-0 right-0 z-50">
         <Navbar />
@@ -28,7 +28,7 @@ const HeroSection = () => {
       
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out"
+        className="absolute inset-0 h-[880px] bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out"
         style={{
           backgroundImage: `url(${heroImages[currentImageIndex]})`,
           backgroundPosition: 'center 30%',
@@ -42,24 +42,26 @@ const HeroSection = () => {
 
 
       {/* Text Overlay - Positioned in lower-left */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pt-16">
+      <div className="absolute bottom-0 left-0 right-0 z-10 pt-8 md:pt-16">
         <div className="w-full pb-16 md:pb-20 pl-6 md:pl-12 lg:pl-16 xl:pl-24">
           <h1 
-            className="text-white mb-3 md:mb-4 font-normal leading-tight"
+            className="text-white mb-3 md:mb-5 font-normal leading-tight"
             style={{ 
               fontFamily: 'Georgia, "Times New Roman", serif',
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              letterSpacing: '0.02em'
+              fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+              letterSpacing: '0.02em',
+              lineHeight: '1.1'
             }}
           >
             Discover FarmFort
           </h1>
           <h2 
-            className="text-white mb-4 md:mb-6 font-normal leading-tight"
+            className="text-white mb-4 md:mb-7 font-normal leading-tight"
             style={{ 
               fontFamily: 'Georgia, "Times New Roman", serif',
-              fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
-              letterSpacing: '0.02em'
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              letterSpacing: '0.03em',
+              lineHeight: '1.2'
             }}
           >
             A Paradise Of Tranquility
