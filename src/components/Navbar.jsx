@@ -83,8 +83,8 @@ const Navbar = () => {
               <a href="/" className="flex items-center">
                 <div className="bg-transparent">
                   <img 
-                    src="/logo1.png" 
-                    alt="AQUILA Luxury Hotel & Resort" 
+                    src="/Logo1.png" 
+                    alt="Resort Logo"
                     className="h-10 w-auto mix-blend-multiply"
                   />
                 </div>
