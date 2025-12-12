@@ -5,6 +5,15 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const dropdownRef = useRef(null);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -102,7 +111,7 @@ const Navbar = () => {
                   <div key={item.name} className="relative group">
                     <button
                       onClick={() => item.dropdown ? toggleDropdown(item.name) : window.location.href = item.path}
-                      className="text-white hover:text-amber-400 transition-colors duration-300 font-medium flex items-center"
+                      className="text-white hover:text-[#0F4D2F] transition-colors duration-300 font-medium flex items-center"
                     >
                       {item.name}
                       {item.dropdown && (
@@ -158,13 +167,13 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Slide-in Panel */}
-        <div className={`fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`lg:hidden fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="flex flex-col h-full">
             {/* Close Button */}
             <div className="flex justify-end p-4">
               <button
                 onClick={toggleMenu}
-                className="bg-[#8B5A2B] text-white w-10 h-10 flex items-center justify-center focus:outline-none"
+                className="bg-[#0F4D2F] text-white w-10 h-10 flex items-center justify-center focus:outline-none"
                 aria-label="Close menu"
               >
                 <span className="text-2xl">&times;</span>
@@ -173,25 +182,27 @@ const Navbar = () => {
             
             {/* Navigation Links */}
             <nav className="flex-1 px-6 py-4 overflow-y-auto">
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {navItems.map((item) => (
-                  <li key={item.name} className="border-b border-gray-100">
+                  <li key={item.name}>
                     {item.dropdown ? (
-                      <div>
+                      <div className="group">
                         <button
                           onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex justify-between items-center text-gray-800 text-lg hover:text-amber-500 transition-colors duration-200 py-3"
+                          className="w-full flex justify-between items-center text-gray-700 text-base font-semibold hover:text-[#0F4D2F] transition-colors duration-200 py-2.5 px-1"
                         >
                           <span>{item.name}</span>
-                          {openDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
+                          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            {openDropdown === item.name ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
+                          </span>
                         </button>
                         {openDropdown === item.name && (
-                          <div className="pl-4 pb-2">
+                          <div className={`pl-3 overflow-hidden transition-all duration-300 ${openDropdown === item.name ? 'max-h-96' : 'max-h-0'}`}>
                             {item.dropdown.map((subItem) => (
                               <a
                                 key={subItem.name}
                                 href={subItem.path}
-                                className="block py-2 text-gray-600 hover:text-amber-500 transition-colors duration-200"
+                                className={`block py-2.5 px-1 ${currentPath === item.path ? 'text-[#0F4D2F]' : 'text-gray-700 hover:text-[#0F4D2F]'} transition-colors duration-200 font-semibold text-base`}
                                 onClick={() => {
                                   setIsOpen(false);
                                   closeAllDropdowns();
@@ -206,7 +217,7 @@ const Navbar = () => {
                     ) : (
                       <a
                         href={item.path}
-                        className="block py-3 text-gray-800 text-lg hover:text-amber-500 transition-colors duration-200"
+                        className={`block py-2.5 px-1 ${currentPath === item.path ? 'text-[#0F4D2F]' : 'text-gray-700 hover:text-[#0F4D2F]'} transition-colors duration-200 font-semibold text-base`}
                         onClick={() => {
                           setIsOpen(false);
                           closeAllDropdowns();
@@ -218,16 +229,6 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              
-              <button 
-                className="mt-8 w-full border-2 border-gray-800 text-gray-800 font-medium py-3 px-6 hover:bg-gray-100 transition-colors duration-200"
-                onClick={() => {
-                  setIsOpen(false);
-                  // Add navigation to rooms page if needed
-                }}
-              >
-                View Rooms
-              </button>
             </nav>
           </div>
         </div>
