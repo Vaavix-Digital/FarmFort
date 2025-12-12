@@ -81,7 +81,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <a href="/" className="flex items-center">
-                <div className="bg-transparent flex items-center justify-center w-32 h-12 border border-red-500">
+                <div className="flex items-center justify-center w-32 h-12">
                   <img 
                     src="/Logo1.png" 
                     alt="Resort Logo"
