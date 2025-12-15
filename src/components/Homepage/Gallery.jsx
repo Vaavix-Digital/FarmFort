@@ -67,7 +67,7 @@ const Gallery = () => {
 
   return (
     <section className="w-full pt-16 pb-2 md:pt-20 md:pb-6 lg:pt-24 lg:pb-8 bg-white">
-      <div ref={ref} className="max-w-7xl mx-auto px-1 md:px-3 lg:px-4">
+      <div ref={ref} className="max-w-7xl mx-auto px-2 md:px-3 lg:px-4">
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
@@ -94,7 +94,7 @@ const Gallery = () => {
 
           {/* Image Grid - 3 Columns Masonry Layout */}
           <motion.div 
-            className="w-full grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"
+            className="w-full grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 px-2 sm:px-0"
             variants={container}
             initial="hidden"
             animate={controls}

@@ -103,7 +103,7 @@ const SpecialPackages = () => {
       </div>
 
       {/* Packages Grid */}
-      <div className="grid grid-cols-1 gap-6 mb-16">
+      <div className="grid grid-cols-1 gap-6 mb-16 px-2 sm:px-0">
         {packages.map((pkg, index) => (
           <motion.div 
             key={pkg.id} 

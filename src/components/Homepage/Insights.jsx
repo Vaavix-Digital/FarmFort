@@ -79,7 +79,7 @@ const Insights = () => {
         </div>
 
         {/* Article Previews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 px-3 sm:px-0">
           {articles.map((article, index) => (
             <motion.div 
               key={article.id} 
