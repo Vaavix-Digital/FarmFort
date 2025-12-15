@@ -70,27 +70,19 @@ const Rooms = () => {
     <div className="min-h-screen bg-white font-['Roboto']">
       <div className="pt-16 pb-10 text-center px-4">
         <div className="flex flex-col items-center justify-center mb-6">
-          <div className="w-10 h-10 rounded-full border-2 border-[#D2A07F] flex items-center justify-center mb-3">
-            <svg 
-              className="w-6 h-6 text-[#D2A07F]" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-              />
-            </svg>
-          </div>
-          <p className="text-[#D2A07F] font-semibold tracking-wide text-base md:text-lg font-['Roboto']">
-            Rooms
-          </p>
+          <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+          <img 
+            src="/logo icon.png" 
+            alt="FarmFort Logo"
+            className="w-7 h-7 object-contain"
+          />
+        </div>
+         <p className="text-[#056839] text-base font-semibold" style={{ fontFamily: '"Roboto", sans-serif' }}>
+              Rooms
+            </p>
         </div>
         <motion.h2 
-          className="font-gilda text-4xl font-semibold text-black mb-6"
+          className="font-gilda text-3xl md:text-4xl font-semibold text-black mb-6"
           ref={ref}
           variants={slideUp}
           initial="hidden"
@@ -98,7 +90,7 @@ const Rooms = () => {
         >
           Where Every Room Is A Masterpiece Of Luxury
         </motion.h2>
-        <p className="max-w-4xl mx-auto text-gray-800 font-roboto md:text-lg">
+        <p className="max-w-4xl mx-auto text-gray-800 font-roboto md:text-lg mb-3 md:mb-0">
           Suspendisse senectus platea quam mauris; etiam molestie quis. Porttitor
           mollis cubilia, imperdiet lacinia praesent hac. Ligula nibh ullamcorper
           pellentesque facilisis adipiscing.
@@ -106,24 +98,24 @@ const Rooms = () => {
       </div>
 
       <motion.div 
-        className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-10"
+        className="max-w-7xl mx-auto px-4 pt-2 pb-10 md:py-10 grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10"
         ref={ref}
         variants={slideUp}
         initial="hidden"
         animate={controls}
       >
-        <div className="md:col-span-1 space-y-3">
+        <div className="flex flex-col items-center md:items-start space-y-3 md:col-span-1">
           {roomTypes.map((room) => (
             <button
               key={room.id}
               onClick={() => setSelectedRoom(room.id)}
-              className={`group flex items-center py-4 w-full transition-all text-left pl-8 relative ${
+              className={`group flex items-center justify-center py-4 w-full transition-all text-center relative ${
                 selectedRoom === room.id || room.id === "deluxe"
-                  ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#056839] after:transition-all"
+                  ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-[1px] after:bg-[#056839] after:transition-all"
                   : "text-gray-700 hover:text-[#056839]"
               }`}
             >
-              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 flex items-center justify-center">
+              <div className="hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 w-6 h-6 items-center justify-center">
                 <svg 
                   className={`w-5 h-5 ${
                     selectedRoom === room.id || room.id === "deluxe" ? "text-[#056839]" : "text-gray-300"
@@ -158,7 +150,7 @@ const Rooms = () => {
           <div className="w-full lg:w-1/2 space-y-6 pt-8">
             <div className="space-y-3 w-full pr-0 lg:pr-6">
               <h2 className="text-2xl font-normal text-gray-900 font-gilda mb-4 ">Room Overview</h2>
-              <p className="text-gray-600 text-base " style={{ fontFamily: '"Roboto", sans-serif' }}>
+              <p className="text-gray-800 text-base " style={{ fontFamily: '"Roboto", sans-serif' }}>
                 {details.overview}
               </p>
             </div>
@@ -201,7 +193,7 @@ const Rooms = () => {
 
             <div className="space-y-3">
               <h3 className="text-xl font-medium text-gray-900 font-gilda mb-3">Facilities</h3>
-              <ul className="grid grid-cols-2 gap-3 text-gray-700 text-base">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700 text-base">
                 <li className="flex items-center space-x-2" style={{ fontFamily: '"Roboto", sans-serif' }}>
                   <FaWifi className="text-[#D2A07F] text-lg " />
                   <span>Free Wifi</span>
@@ -229,11 +221,15 @@ const Rooms = () => {
               </ul>
             </div>
 
-            <div className="flex items-center justify-between pt-3">
-              <span className="text-5xl font-black text-black font-gilda">${details.price} <span className="text-sm font-normal text-gray-900" style={{ fontFamily: '"Roboto", sans-serif' }}>/ Night</span></span>
-              <button className="bg-[#056839] hover:bg-[#04502d] text-white  font-normal py-3 px-6 transition duration-200 "style={{ fontFamily: '"Roboto", sans-serif' }}>
-                Book Now
-              </button>
+            <div className="pt-3">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                <div className="text-left mb-3 lg:mb-0">
+                  <span className="text-4xl md:text-5xl font-black text-black font-gilda">${details.price} <span className="text-sm font-normal text-gray-900" style={{ fontFamily: '"Roboto", sans-serif' }}>/ Night</span></span>
+                </div>
+                <button className="bg-[#056839] hover:bg-[#04502d] text-white font-normal py-3.5 px-4 text-sm transition duration-200 w-[120px] lg:w-auto lg:py-3 lg:px-6 lg:text-base max-w-[180px]" style={{ fontFamily: '"Roboto", sans-serif' }}>
+                  Book Now
+                </button>
+              </div>
             </div>
           </div>
         </div>

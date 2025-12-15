@@ -13,20 +13,25 @@ const AnimatedCounter = ({ number, suffix, label }) => {
   const numericValue = parseFloat(number);
   
   return (
-    <div ref={ref} className="p-4 transform transition-all duration-500 ease-out" 
-         style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(20px)' }}>
-      <div className="flex items-baseline justify-center gap-2 mb-3">
-        <span className="text-4xl md:text-5xl font-extrabold text-[#056839] font-['Roboto']">
-          <CountUp
-            end={inView ? numericValue : 0}
-            duration={2.5}
-            decimals={number.includes('.') ? 1 : 0}
-            className="font-black"
-          />
-          <span className="font-black">{suffix}</span>
-        </span>
+    <div 
+      ref={ref} 
+      className="w-full transform transition-all duration-500 ease-out text-center" 
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(20px)' }}
+    >
+      <div className="mb-2">
+        <div className="flex justify-center items-baseline">
+          <span className="text-4xl md:text-6xl lg:text-7xl font-semibold text-[#056839] font-['Roboto']">
+            <CountUp
+              end={inView ? numericValue : 0}
+              duration={2.5}
+              decimals={number.includes('.') ? 1 : 0}
+              style={{ fontFamily: '"Roboto", sans-serif', fontWeight: 600 }}
+            />
+            <span className="text-4xl md:text-6xl lg:text-7xl font-semibold text-[#056839]">{suffix}</span>
+          </span>
+        </div>
       </div>
-      <p className="text-gray-700 text-base md:text-lg font-normal font-['Roboto']">{label}</p>
+      <p className="text-gray-900 text-base md:text-lg font-normal font-gilda">{label}</p>
     </div>
   );
 };
@@ -66,32 +71,27 @@ const SpecialPackages = () => {
   ];
 
   return (
-    <div className="w-full bg-white py-16 px-4 md:px-8 lg:px-16">
+    <div className="w-full bg-white py-16 px-2 md:px-3 lg:px-4">
       {/* Header Section */}
       <div className="text-center mb-16">
-        {/* Star Icon */}
-        <div className="flex justify-center mb-4">
-          <div className="w-10 h-10 rounded-full border-2 border-green-600 flex items-center justify-center">
-            <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-              />
-            </svg>
+        <div className="flex flex-col items-center justify-center mb-6">
+          <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+            <img 
+              src="/logo icon.png" 
+              alt="FarmFort Logo"
+              className="w-7 h-7 object-contain"
+            />
           </div>
+          <p className="text-[#056839] text-base font-semibold" style={{ fontFamily: '"Roboto", sans-serif' }}>
+            Special Packages
+          </p>
         </div>
-
-        <p className="text-[#056839] font-normal tracking-wide mb-3 text-base md:text-lg font-['Roboto']">
-          Special Packages
-        </p>
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.16, 0.77, 0.47, 0.97] }}
-          className="font-gilda text-4xl font-semibold text-black mb-6"
+          className="font-gilda text-3xl md:text-4xl font-semibold text-black mb-6"
         >
           Enhance Your Stay With Our Signature Packages
         </motion.h2>
@@ -130,7 +130,7 @@ const SpecialPackages = () => {
               <h3 className="text-white text-xl font-normal">{pkg.title}</h3>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-white text-sm font-medium tracking-wider mb-1 font-['Roboto']">Up To</p>
+                  <p className="text-white text-md font-medium tracking-wider mb-1"  style={{ fontFamily: '"Roboto", sans-serif' }}>Up To</p>
                   <p className="text-white text-5xl font-bold">{pkg.discount}</p>
                 </div>
               </div>

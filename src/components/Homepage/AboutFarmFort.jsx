@@ -109,7 +109,7 @@ const AboutFarmFort = () => {
             <span className="block">Personalized Hospitality</span>
           </h1>
 
-          <p className="text-gray-700 text-base sm:text-base leading-relaxed" style={{ fontFamily: '"Roboto", sans-serif' }}>
+          <p className="text-gray-800 text-base sm:text-base leading-relaxed" style={{ fontFamily: '"Roboto", sans-serif' }}>
             Quam auctor vulputate rutrum sapien euismod et veluipat curabitur sit. Ultrices velit sagittis, 
             laboris dapibus venenatis convallis. Nulla platea pulvinar justo plateu tempus at elementum.
             Libero netus hac litora curabitur vulputate euismod. Sollicitudin hendrerit nibh auctor himenaeos curabitur ridiculus torquent. Elit aptent netus mi orci tristique pharetra accumsan. 
@@ -120,7 +120,7 @@ const AboutFarmFort = () => {
         <div className="absolute bottom-0 right-0 w-full md:w-1/2 lg:w-2/5 bg-white p-4 sm:p-6 z-10">
           <p 
             ref={paragraphRef}
-            className="text-gray-600 text-base sm:text-base leading-relaxed mb-4 opacity-0 italic" style={{ fontFamily: '"Roboto", sans-serif' }}
+            className="text-gray-800 text-base sm:text-base leading-relaxed mb-4 opacity-0 italic" style={{ fontFamily: '"Roboto", sans-serif' }}
           >
             FarmFort is a haven of refined luxury, where timeless elegance meets modern sophistication.
             Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and

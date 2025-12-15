@@ -44,11 +44,12 @@ const FAQContact = () => {
   };
 
   return (
-    <section className="w-full py-16 md:py-20 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Left Column - FAQ Section */}
+    <section className="w-full pt-0 pb-2 md:pt-0 md:pb-6 lg:pt-0 lg:pb-8 bg-white">
+      <div className="max-w-7xl mx-auto px-2 md:px-4 lg:px-6">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-4 md:gap-6">
+          {/* Left Column - FAQ Section - Moved down on mobile */}
           <motion.div
+            className="lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ 
               opacity: 1, 
@@ -61,21 +62,22 @@ const FAQContact = () => {
             }}
             viewport={{ once: true, margin: "-30px" }}
           >
-            <div className="space-y-3">
+            <div className="space-y-2">
               {faqs.map((faq, index) => (
-                <div key={index} className="rounded overflow-hidden">
+                <div key={index} className="rounded-none overflow-hidden">
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className={`w-full flex items-center justify-between p-3 md:p-4 text-left transition-colors ${
+                    className={`w-full flex items-center justify-between p-2 md:p-3 text-left transition-colors rounded-none ${
                       openIndex === index 
                         ? 'bg-black text-white' 
                         : 'bg-[#ECECEC] text-gray-800 hover:bg-[#ECECEC]'
                     }`}
                   >
                     <span 
-                      className="font-medium font-sans"
+                      className="font-medium font-sans italic"
                       style={{ 
-                        fontSize: '0.95rem'
+                        fontSize: '1rem',
+                        fontStyle: 'italic'
                       }}
                     >
                       {faq.question}
@@ -97,12 +99,13 @@ const FAQContact = () => {
                     </svg>
                   </button>
                   {openIndex === index && (
-                    <div className="p-3 md:p-4 bg-white">
+                    <div className="p-2 md:p-3 bg-white text-sm">
                       <p
-                        className="text-gray-600 leading-relaxed font-sans"
+                        className="text-gray-800 leading-relaxed font-sans"
                         style={{
-                          fontSize: '0.9rem',
-                          lineHeight: '1.6'
+                          fontSize: '0.95rem',
+                          lineHeight: '1.6',
+                          fontStyle: 'normal'
                         }}
                       >
                         {faq.answer}
@@ -114,37 +117,22 @@ const FAQContact = () => {
             </div>
           </motion.div>
 
-          {/* Right Column - Introduction and Contact */}
-          <div className="flex flex-col">
+          {/* Right Column - Introduction and Contact - Moved up on mobile */}
+          <div className="flex flex-col lg:order-2">
             {/* Star Icon */}
-            <div className="mb-6">
-              <div className="w-12 h-12 rounded-full border-2 border-green-600 flex items-center justify-center inline-flex">
-                <svg 
-                  className="w-6 h-6 text-green-600" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" 
-                  />
-                </svg>
-              </div>
-            </div>
+            <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+            <img 
+              src="/logo icon.png" 
+              alt="FarmFort Logo"
+              className="w-7 h-7 object-contain"
+            />
+          </div>
 
             {/* Subtitle */}
-            <p 
-              className="text-[#056839] font-normal tracking-wide mb-3 text-base md:text-lg"
-              style={{ 
-                fontFamily: 'Arial, Helvetica, sans-serif'
-              }}
-            >
+             <p className="text-[#056839] text-base font-semibold mb-4" style={{ fontFamily: '"Roboto", sans-serif' }}>
               Frequently Asked Questions
             </p>
-
+     
             {/* Main Title */}
             <motion.h2 
               className="text-black font-semibold mb-6 leading-tight"
@@ -180,7 +168,7 @@ const FAQContact = () => {
             </p>
 
             {/* Contact Us Section */}
-            <div className="mt-8">
+            <div className="mt">
               <h3 
                 className="text-gray-900 mb-6 font-semibold font-['Gilda_Display']"
                 style={{ 
@@ -243,7 +231,7 @@ const FAQContact = () => {
 
               {/* View More Button */}
               <button
-                className="mt-12 bg-[#056839] hover:bg-[#04522d] text-white px-6 py-3 rounded transition-colors duration-300 font-medium"
+                className="mt-16 bg-[#056839] hover:bg-[#04522d] text-white px-6 py-3 transition-colors duration-300 font-medium"
                 style={{ 
                   fontFamily: 'Arial, Helvetica, sans-serif',
                   fontSize: '1rem'

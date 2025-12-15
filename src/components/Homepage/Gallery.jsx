@@ -23,35 +23,35 @@ const Gallery = () => {
       opacity: 1,
       transition: {
         when: 'beforeChildren',
-        staggerChildren: 0.1  // Reduced from 0.2
+        staggerChildren: 0.2  // Increased from 0.1
       }
     }
   };
 
   const item = {
-    hidden: { opacity: 0, y: 10 },  // Reduced y from 20
+    hidden: { opacity: 0, y: 20 },  // Increased y from 10
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.3 }  // Reduced from 0.6
+      transition: { duration: 0.8, ease: 'easeOut' }  // Increased from 0.3 and added easeOut
     }
   };
 
   const firstImage = {
-    hidden: { opacity: 0, x: -50 },  // Reduced x from -100
+    hidden: { opacity: 0, x: -100 },  // Increased x from -50
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.4, ease: 'easeOut' }  // Reduced from 0.8
+      transition: { duration: 1, ease: [0.16, 0.77, 0.47, 0.97] }  // Increased from 0.4 and added custom easing
     }
   };
 
   const thirdImage = {
-    hidden: { opacity: 0, x: 50 },  // Reduced x from 100
+    hidden: { opacity: 0, x: 100 },  // Increased x from 50
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.4, ease: 'easeOut' }  // Reduced from 0.8
+      transition: { duration: 1, ease: [0.16, 0.77, 0.47, 0.97] }  // Increased from 0.4 and added custom easing
     }
   };
   const galleryImages = [
@@ -66,35 +66,24 @@ const Gallery = () => {
   ];
 
   return (
-    <section className="w-full py-16 md:py-20 lg:py-24 bg-white">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex flex-col items-center text-center">
-          {/* Star Icon */}
-          <div className="mb-6">
-            <div className="w-10 h-10 rounded-full border-2 border-green-600 flex items-center justify-center">
-              <svg 
-                className="w-6 h-6 text-green-600" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" 
-                />
-              </svg>
+    <section className="w-full pt-16 pb-2 md:pt-20 md:pb-6 lg:pt-24 lg:pb-8 bg-white">
+      <div ref={ref} className="max-w-7xl mx-auto px-1 md:px-3 lg:px-4">
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="flex flex-col items-center justify-center mb-6">
+            <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+              <img 
+                src="/logo icon.png" 
+                alt="FarmFort Logo"
+                className="w-7 h-7 object-contain"
+              />
             </div>
+            <p className="text-[#056839] text-base font-semibold" style={{ fontFamily: '"Roboto", sans-serif' }}>
+              Gallery
+            </p>
           </div>
 
-          {/* Gallery Label */}
-          <p className="text-[#056839] font-normal tracking-wide mb-3 text-base md:text-lg font-['Roboto']">
-            Gallery
-          </p>
-
           {/* Main Title */}
-          <h2 className="font-gilda text-4xl font-semibold text-black mb-6">
+          <h2 className="font-gilda text-3xl md:text-4xl font-semibold text-black mb-6">
             Experience Our World In Pictures
           </h2>
 
@@ -105,7 +94,7 @@ const Gallery = () => {
 
           {/* Image Grid - 3 Columns Masonry Layout */}
           <motion.div 
-            className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
+            className="w-full grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"
             variants={container}
             initial="hidden"
             animate={controls}
