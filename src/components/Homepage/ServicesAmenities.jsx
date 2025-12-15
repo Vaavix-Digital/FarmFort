@@ -6,7 +6,7 @@ import './ServicesAmenities.css';
 const ServicesAmenities = () => {
   const amenities = [
     { name: 'Free Wifi', icon: 'wifi' },
-    { name: 'Free Breakfast', icon: 'food' },
+    { name: 'Breakfast', icon: 'food' },
     { name: 'Event Venues', icon: 'event' },
     { name: 'Swimming Pool', icon: 'pool' },
     { name: "Kids' Park", icon: 'park' },

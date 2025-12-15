@@ -69,11 +69,11 @@ const AboutFarmFort = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full px-3 py-12">
 
       {/* Background Image - FIXED */}
       <div
-        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[90vh] min-h-[800px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px]"
+        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[100vh] min-h-[900px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px] px-0.5 md:px-0"
         style={{
           backgroundImage: "url('/Room1.jpeg')",
           backgroundSize: 'cover',
@@ -87,8 +87,8 @@ const AboutFarmFort = () => {
       >
 
         {/* TOP LEFT BOX */}
-        <div className="absolute top-0 left-0 w-full md:w-1/2 bg-white p-4 sm:p-6 z-10">
-          <div className="flex flex-col items-start gap-2 mb-4">
+        <div className="absolute top-0 left-0 w-full md:w-1/2 bg-white p-3 sm:p-4 z-10">
+          <div className="flex flex-col items-start gap-2 mb-4 p-0">
             <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white">
               <img 
                 src="/logo icon.png" 
@@ -109,7 +109,7 @@ const AboutFarmFort = () => {
             <span className="block">Personalized Hospitality</span>
           </h1>
 
-          <p className="text-gray-800 text-base sm:text-base leading-relaxed" style={{ fontFamily: '"Roboto", sans-serif' }}>
+          <p className="text-gray-800 text-base sm:text-base leading-relaxed m-0" style={{ fontFamily: '"Roboto", sans-serif' }}>
             Quam auctor vulputate rutrum sapien euismod et veluipat curabitur sit. Ultrices velit sagittis, 
             laboris dapibus venenatis convallis. Nulla platea pulvinar justo plateu tempus at elementum.
             Libero netus hac litora curabitur vulputate euismod. Sollicitudin hendrerit nibh auctor himenaeos curabitur ridiculus torquent. Elit aptent netus mi orci tristique pharetra accumsan. 
@@ -117,10 +117,10 @@ const AboutFarmFort = () => {
         </div>
 
         {/* BOTTOM RIGHT BOX */}
-        <div className="absolute bottom-0 right-0 w-full md:w-1/2 lg:w-2/5 bg-white p-4 sm:p-6 z-10">
+        <div className="absolute bottom-0 right-0 w-full md:w-1/2 lg:w-2/5 bg-white p-3 sm:p-4 z-10">
           <p 
             ref={paragraphRef}
-            className="text-gray-800 text-base sm:text-base leading-relaxed mb-4 opacity-0 italic" style={{ fontFamily: '"Roboto", sans-serif' }}
+            className="text-gray-800 text-base sm:text-base leading-relaxed mb-4 opacity-0 italic m-0" style={{ fontFamily: '"Roboto", sans-serif' }}
           >
             FarmFort is a haven of refined luxury, where timeless elegance meets modern sophistication.
             Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and
