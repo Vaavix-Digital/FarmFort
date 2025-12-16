@@ -22,22 +22,18 @@ const Navbar = () => {
       name: 'Rooms', 
       path: '/rooms',
       dropdown: [
-        { name: 'Room Grid', path: '/rooms/grid' },
-        { name: 'Room List', path: '/rooms/list' },
-        { name: 'Room Details', path: '/rooms/details' },
-        { name: 'Booking', path: '/booking' }
+        { name: 'Rooms', path: '/rooms' },
+        { name: 'Room Details', path: '/rooms/details' }
       ]
     },
     { 
       name: 'Pages', 
       path: '/pages',
       dropdown: [
-        { name: 'About Us', path: '/about' },
-        { name: 'Services', path: '/services' },
-        { name: 'Gallery', path: '/gallery' },
-        { name: 'Team', path: '/team' },
-        { name: 'FAQ', path: '/faq' },
-        { name: '404', path: '/404' }
+        { name: 'Special Offers', path: '/special-offers' },
+        { name: 'Staff', path: '/our-team' },
+        { name: 'FAQs', path: '/faqs' },
+        { name: '404 Page', path: '/404' }
       ]
     },
     { 
