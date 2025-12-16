@@ -40,9 +40,8 @@ const Navbar = () => {
       name: 'Blog', 
       path: '/blog',
       dropdown: [
-        { name: 'Blog Grid', path: '/blog/grid' },
-        { name: 'Blog List', path: '/blog/list' },
-        { name: 'Blog Single', path: '/blog/single' }
+        { name: 'Blog Archive', path: '/blog' },
+        { name: 'Single Post', path: '/blog/single-post' }
       ]
     },
     { name: 'Contact', path: '/contact' },
