@@ -183,32 +183,43 @@ const Navbar = () => {
                   <li key={item.name}>
                     {item.dropdown ? (
                       <div className="group">
-                        <button
-                          onClick={() => toggleDropdown(item.name)}
-                          className="w-full flex justify-between items-center text-gray-700 text-base font-semibold hover:text-[#0F4D2F] transition-colors duration-200 py-2.5 px-1"
-                        >
-                          <span>{item.name}</span>
-                          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className="flex justify-between items-center">
+                          <a
+                            href={item.path}
+                            className="text-gray-700 text-base font-semibold hover:text-[#0F4D2F] transition-colors duration-200 py-2.5 px-1"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              toggleDropdown(item.name);
+                            }}
+                          >
+                            {item.name}
+                          </a>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleDropdown(item.name);
+                            }}
+                            className="p-2 -mr-2"
+                            aria-label={`Toggle ${item.name} menu`}
+                          >
                             {openDropdown === item.name ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
-                          </span>
-                        </button>
-                        {openDropdown === item.name && (
-                          <div className={`pl-3 overflow-hidden transition-all duration-300 ${openDropdown === item.name ? 'max-h-96' : 'max-h-0'}`}>
-                            {item.dropdown.map((subItem) => (
-                              <a
-                                key={subItem.name}
-                                href={subItem.path}
-                                className={`block py-2.5 px-1 ${currentPath === item.path ? 'text-[#0F4D2F]' : 'text-gray-700 hover:text-[#0F4D2F]'} transition-colors duration-200 font-semibold text-base`}
-                                onClick={() => {
-                                  setIsOpen(false);
-                                  closeAllDropdowns();
-                                }}
-                              >
-                                {subItem.name}
-                              </a>
-                            ))}
-                          </div>
-                        )}
+                          </button>
+                        </div>
+                        <div className={`pl-3 overflow-hidden transition-all duration-300 ${openDropdown === item.name ? 'max-h-96' : 'max-h-0'}`}>
+                          {item.dropdown.map((subItem) => (
+                            <a
+                              key={subItem.name}
+                              href={subItem.path}
+                              className={`block py-2.5 px-1 ${currentPath === subItem.path ? 'text-[#0F4D2F]' : 'text-gray-700 hover:text-[#0F4D2F]'} transition-colors duration-200 font-semibold text-base`}
+                              onClick={() => {
+                                setIsOpen(false);
+                                closeAllDropdowns();
+                              }}
+                            >
+                              {subItem.name}
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     ) : (
                       <a
