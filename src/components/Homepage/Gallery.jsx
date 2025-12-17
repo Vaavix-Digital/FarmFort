@@ -88,8 +88,9 @@ const Gallery = () => {
           </h2>
 
           {/* Descriptive Paragraph */}
-          <p className="max-w-4xl mx-auto text-gray-800 font-roboto md:text-lg mb-12 md:mb-16">
-            Suspendisse senectus platea quam mauris; etiam molestie quis. Porttitor mollis cubilia, imperdiet lacinia praesent hac. Ligula nibh ullamcorper pellentesque facilisis adipiscing.
+          <p className="max-w-4xl mx-auto text-gray-800 font-roboto text-sm md:text-base text-center mb-12">
+            Suspendisse senectus platea quam mauris; etiam molestie quis. Porttitor mollis cubilia, imperdiet lacinia
+            praesent hac. Ligula nibh ullamcorper pellentesque facilisis adipiscing.
           </p>
 
           {/* Image Grid - 3 Columns Masonry Layout */}
