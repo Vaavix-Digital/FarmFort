@@ -16,36 +16,55 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
+    { name: 'Home', path: '/', exact: true },
+    { name: 'About', path: '/about', exact: false },
     { 
       name: 'Rooms', 
       path: '/rooms',
+      exact: false,
       dropdown: [
-        { name: 'Rooms', path: '/rooms' },
-        { name: 'Room Details', path: '/rooms/details' }
+        { name: 'Rooms', path: '/rooms', exact: true },
+        { name: 'Room Details', path: '/rooms/details', exact: false }
       ]
     },
     { 
       name: 'Pages', 
       path: '/pages',
+      exact: false,
       dropdown: [
-        { name: 'Special Offers', path: '/special-offers' },
-        { name: 'Staff', path: '/our-team' },
-        { name: 'FAQs', path: '/faqs' },
-        { name: '404 Page', path: '/404' }
+        { name: 'Special Offers', path: '/special-offers', exact: true },
+        { name: 'Staff', path: '/our-team', exact: true },
+        { name: 'FAQs', path: '/faqs', exact: true },
+        { name: '404 Page', path: '/404', exact: true }
       ]
     },
     { 
       name: 'Blog', 
       path: '/blog',
+      exact: false,
       dropdown: [
-        { name: 'Blog Archive', path: '/blog' },
-        { name: 'Single Post', path: '/blog/single-post' }
+        { name: 'Blog Archive', path: '/blog', exact: true },
+        { name: 'Single Post', path: '/blog/single-post', exact: false }
       ]
     },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Contact', path: '/contact', exact: true },
   ];
+
+  // Function to check if a nav item is active
+  const isActive = (path, exact = false) => {
+    if (exact) {
+      return currentPath === path;
+    }
+    return currentPath.startsWith(path) && (path === '/' || currentPath === path || currentPath.startsWith(`${path}/`));
+  };
+
+  // Function to check if a parent nav item should be active
+  const isParentActive = (item) => {
+    if (item.dropdown) {
+      return item.dropdown.some(subItem => isActive(subItem.path, subItem.exact));
+    }
+    return isActive(item.path, item.exact);
+  };
 
   const toggleDropdown = (itemName) => {
     setOpenDropdown(openDropdown === itemName ? null : itemName);
@@ -104,9 +123,15 @@ const Navbar = () => {
               <div className="flex space-x-8 relative" ref={dropdownRef}>
                 {navItems.map((item) => (
                   <div key={item.name} className="relative group">
-                    <button
-                      onClick={() => item.dropdown ? toggleDropdown(item.name) : window.location.href = item.path}
-                      className="text-white hover:text-[#0F4D2F] transition-colors duration-300 font-medium flex items-center"
+                    <a
+                      href={item.path}
+                      onClick={(e) => {
+                        if (item.dropdown) {
+                          e.preventDefault();
+                          toggleDropdown(item.name);
+                        }
+                      }}
+                      className={`${isParentActive(item) ? 'text-[#0F4D2F]' : 'text-white hover:text-[#0F4D2F]'} transition-colors duration-300 font-medium flex items-center`}
                     >
                       {item.name}
                       {item.dropdown && (
@@ -114,7 +139,7 @@ const Navbar = () => {
                           {openDropdown === item.name ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
                         </span>
                       )}
-                    </button>
+                    </a>
                     {item.dropdown && (
                       <div 
                         className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 transition-all duration-300 ${openDropdown === item.name ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
@@ -123,7 +148,7 @@ const Navbar = () => {
                           <a
                             key={subItem.name}
                             href={subItem.path}
-                            className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors duration-200"
+                            className={`block px-4 py-2 ${isActive(subItem.path, subItem.exact) ? 'bg-gray-100 text-[#0F4D2F]' : 'text-gray-800 hover:bg-gray-100'} transition-colors duration-200`}
                             onClick={closeAllDropdowns}
                           >
                             {subItem.name}
@@ -185,7 +210,7 @@ const Navbar = () => {
                         <div className="flex justify-between items-center">
                           <a
                             href={item.path}
-                            className="text-gray-700 text-base font-semibold hover:text-[#0F4D2F] transition-colors duration-200 py-2.5 px-1"
+                            className={`block py-2 pl-6 ${isParentActive(item) ? 'text-[#0F4D2F] font-medium' : 'text-gray-600 hover:text-[#0F4D2F]'} transition-colors duration-200`}
                             onClick={(e) => {
                               e.preventDefault();
                               toggleDropdown(item.name);
