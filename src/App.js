@@ -9,6 +9,7 @@ import BlogDetails from './pages/Blog/BlogDetails';
 import SpecialOffers from './pages/Pages/SpecialOffers';
 import Staff from './pages/Pages/Staff';
 import Faq from './pages/Pages/Faq';
+import Contact from './pages/Contact/Contact';
 import NotFound from './pages/Pages/NotFoundPage';
 import './App.css';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/special-offers" element={<SpecialOffers />} />
         <Route path="/our-team" element={<Staff />} />
         <Route path="/faqs" element={<Faq />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
