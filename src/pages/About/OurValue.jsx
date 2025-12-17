@@ -13,20 +13,25 @@ const AnimatedCounter = ({ number, suffix, label }) => {
   const numericValue = parseFloat(number);
   
   return (
-    <div ref={ref} className="p-4 transform transition-all duration-500 ease-out" 
-         style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(20px)' }}>
-      <div className="flex items-baseline justify-center gap-2 mb-3">
-        <span className="text-4xl md:text-5xl font-extrabold text-[#056839] font-['Roboto']">
-          <CountUp
-            end={inView ? numericValue : 0}
-            duration={2.5}
-            decimals={number.includes('.') ? 1 : 0}
-            className="font-black"
-          />
-          <span className="font-black">{suffix}</span>
-        </span>
+    <div 
+      ref={ref} 
+      className="w-full transform transition-all duration-500 ease-out text-center" 
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(20px)' }}
+    >
+      <div className="mb-2">
+        <div className="flex justify-center items-baseline">
+          <span className="text-4xl md:text-6xl lg:text-7xl font-semibold text-[#056839] font-['Roboto']">
+            <CountUp
+              end={inView ? numericValue : 0}
+              duration={2.5}
+              decimals={number.includes('.') ? 1 : 0}
+              style={{ fontFamily: '"Roboto", sans-serif', fontWeight: 600 }}
+            />
+            <span className="text-4xl md:text-6xl lg:text-7xl font-semibold text-[#056839]">{suffix}</span>
+          </span>
+        </div>
       </div>
-      <p className="text-gray-700 text-base md:text-lg font-normal font-['Roboto']">{label}</p>
+      <p className="text-gray-900 text-base md:text-lg font-normal font-gilda">{label}</p>
     </div>
   );
 };
@@ -114,15 +119,17 @@ export default function OurValue() {
 
     {/* Statistics Section */}
     <div className="w-full bg-white py-16 px-4 md:px-8 lg:px-16">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-        {stats.map((stat, idx) => (
-          <AnimatedCounter 
-            key={idx}
-            number={stat.number}
-            suffix={stat.suffix}
-            label={stat.label}
-          />
-        ))}
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, idx) => (
+            <AnimatedCounter 
+              key={idx}
+              number={stat.number}
+              suffix={stat.suffix}
+              label={stat.label}
+            />
+          ))}
+        </div>
       </div>
     </div>
     </>
