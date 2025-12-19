@@ -19,16 +19,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/rooms" element={<Navigate to="/rooms/all" replace />} />
-        <Route path="/rooms/:id" element={<Room />} />
-        <Route path="/rooms/details/:id?" element={<RoomDetails />} />
+        <Route path="/rooms" element={<Room />} />
+        <Route path="/rooms/:id" element={<RoomDetails />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogDetails />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/special-offers" element={<SpecialOffers />} />
-        <Route path="/our-team" element={<Staff />} />
-        <Route path="/faqs" element={<Faq />} />
+        <Route path="/staff" element={<Staff />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </div>
   );

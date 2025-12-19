@@ -6,20 +6,23 @@ const AboutFarmFort = () => {
   const paragraphRef = useRef(null);
   const founderNameRef = useRef(null);
   const founderTitleRef = useRef(null);
+  const [bgSize, setBgSize] = useState('cover');
   const [bgPosition, setBgPosition] = useState('center');
 
   useEffect(() => {
-    const updateBgPosition = () => {
+    const updateBgStyles = () => {
       if (window.innerWidth < 768) {
-        setBgPosition('center 75%');
+        setBgSize('120% auto');
+        setBgPosition('center 60%');
       } else {
+        setBgSize('cover');
         setBgPosition('center');
       }
     };
 
-    updateBgPosition();
-    window.addEventListener('resize', updateBgPosition);
-    return () => window.removeEventListener('resize', updateBgPosition);
+    updateBgStyles();
+    window.addEventListener('resize', updateBgStyles);
+    return () => window.removeEventListener('resize', updateBgStyles);
   }, []);
 
   useEffect(() => {
@@ -73,16 +76,17 @@ const AboutFarmFort = () => {
 
       {/* Background Image - FIXED */}
       <div
-        className="relative w-full bg-cover bg-center bg-no-repeat mx-auto h-[100vh] min-h-[900px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px] px-0.5 md:px-0"
+        className="relative w-full bg-cover bg-no-repeat mx-auto h-[140vh] min-h-[700px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px] px-0.5 md:px-0 overflow-hidden"
         style={{
           backgroundImage: "url('/Room1.jpeg')",
-          backgroundSize: 'cover',
+          backgroundSize: bgSize,
           backgroundPosition: bgPosition,
           backgroundAttachment: 'fixed',
           WebkitBackgroundAttachment: 'fixed',
           transform: 'translate3d(0,0,0)',
           backfaceVisibility: 'hidden',
-          willChange: 'transform'
+          willChange: 'transform',
+          backgroundRepeat: 'no-repeat',
         }}
       >
 
@@ -105,14 +109,14 @@ const AboutFarmFort = () => {
             ref={headingRef}
             className="font-gilda text-2xl sm:text-3xl md:text-4xl font-semibold text-black mb-4 sm:mb-6 opacity-0 leading-tight"
           >
-            <span className="block">Where Luxury Meets</span>
-            <span className="block">Personalized Hospitality</span>
+            <span className="block">MEET THE VISIONERY</span>
+            <span className="block">BEHIND FARMFORT</span>
           </h1>
 
           <p className="text-gray-800 text-base sm:text-base leading-relaxed m-0" style={{ fontFamily: '"Roboto", sans-serif' }}>
-            Quam auctor vulputate rutrum sapien euismod et veluipat curabitur sit. Ultrices velit sagittis, 
-            laboris dapibus venenatis convallis. Nulla platea pulvinar justo plateu tempus at elementum.
-            Libero netus hac litora curabitur vulputate euismod. Sollicitudin hendrerit nibh auctor himenaeos curabitur ridiculus torquent. Elit aptent netus mi orci tristique pharetra accumsan. 
+           A veteran journalist with a long career spanning nearly half a century,  Mr M Baburaj is one of the pioneers of Development Journalism in Kerala. He served at Malayala Manorama in various capacities including Reporter, Editor, and Unit Head, before retiring as Senior Coordinating Editor and Unit Head at Kannur.
+           In recognition of his excellence in development-oriented journalism, he has received several prestigious honours, including awards from the State Government and the Indian Medical Association.
+
           </p>
         </div>
 
@@ -122,24 +126,32 @@ const AboutFarmFort = () => {
             ref={paragraphRef}
             className="text-gray-800 text-base sm:text-base leading-relaxed mb-4 opacity-0 italic m-0" style={{ fontFamily: '"Roboto", sans-serif' }}
           >
-            FarmFort is a haven of refined luxury, where timeless elegance meets modern sophistication.
-            Nestled in a prime location, our hotel offers breathtaking views, unparalleled comfort, and
-            an ambiance of serenity.
+           He has also served as a member of the Board of Studies in Journalism at Calicut University and Kannur University, as a member of the Zonal Railway Users’ Consultative Committee, and as the Founding President of Sahitham Residence Association.
+
+After retirement, he established the enterprises Farmrock Garden and Farm Fort on Farook College Road, where he currently serves as Chief Executive Officer.
           </p>
 
-          <p 
-            ref={founderNameRef}
-            className="text-[#056839] text-2xl md:text-xl lg:text-xl font-medium opacity-0"
-          >
-            Baburaj Melethara
-          </p>
+          <div className="opacity-0" ref={founderNameRef}>
+            <div className="w-20 h-20 rounded-full overflow-hidden mb-3">
+              <img 
+                src="/manager.jpeg" 
+                alt="Manager"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-[#056839] text-xl font-medium">
+                Baburaj Melethara
+              </p>
+              <p 
+                ref={founderTitleRef}
+                className="text-sm text-gray-500"
+              >
+                Founder of FarmFort
+              </p>
+            </div>
+          </div>
 
-          <p 
-            ref={founderTitleRef}
-            className="text-base md:text-sm lg:text-sm text-gray-500 opacity-0"
-          >
-            Founder of FarmFort
-          </p>
         </div>
 
       </div>

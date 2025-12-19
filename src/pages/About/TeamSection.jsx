@@ -36,15 +36,19 @@ export default function TeamSection() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-8 flex flex-col items-center text-center">
-          {/* Star Icon */}
-          <div className="w-10 h-10 rounded-full border border-[#C38154] flex items-center justify-center mb-4">
-            <FiStar className="text-[#C38154] text-lg stroke-1" />
+          {/* FarmFort Logo and Label */}
+          <div className="flex flex-col items-center justify-center mb-6">
+            <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+              <img 
+                src="/logo icon.png" 
+                alt="FarmFort Logo"
+                className="w-7 h-7 object-contain"
+              />
+            </div>
+            <p className="text-[#056839] text-base font-semibold" style={{ fontFamily: '"Roboto", sans-serif' }}>
+              Our Team
+            </p>
           </div>
-
-          {/* Label */}
-          <p className="text-base text-[#C38154] tracking-wider font-normal mb-6">
-            <span className="font-bold">Our Team</span>
-          </p>
 
           {/* Main Heading */}
           <div className="pb-0 px-4">

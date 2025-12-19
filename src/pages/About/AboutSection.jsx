@@ -29,14 +29,20 @@ const AboutSection = () => {
   }, [isInView, controls]);
   return (
     <main className="min-h-screen bg-white">
-      {/* Top Icon + Label - Centered */}
-      <div className="pt-16 pb-4 pl-2 pr-4 flex flex-col items-center">
-        <div className="w-10 h-10 rounded-full border border-[#C38154] flex items-center justify-center mb-4">
-          <FiStar className="text-[#C38154] text-lg stroke-1" />
+      {/* Top Icon + Label - Centered - Matching SpecialPackages */}
+      <div className="pt-16 pb-4 pl-2 pr-4">
+        <div className="flex flex-col items-center justify-center mb-6">
+          <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+            <img 
+              src="/logo icon.png" 
+              alt="FarmFort Logo"
+              className="w-7 h-7 object-contain"
+            />
+          </div>
+          <p className="text-[#056839] text-base font-semibold" style={{ fontFamily: '"Roboto", sans-serif' }}>
+            About Farm Fort
+          </p>
         </div>
-        <p className="text-base text-[#C38154] tracking-wider font-normal mb-3">
-          <span className="font-bold">About Farm Fort</span>
-        </p>
       </div>
 
       {/* Main Heading */}
@@ -48,22 +54,26 @@ const AboutSection = () => {
           initial="hidden"
           animate={controls}
         >
-          Where Luxury Meets Personalized Hospitality
+         MEET THE VISIONERY BEHIND FARM FORT
         </motion.h2>
       </div>
 
       {/* Main Content */}
-      <div className="px-4 md:px-6 lg:px-8 pb-8 pt-2">
+      <div className="px-4 md:px-6 lg:pl-12 lg:pr-8 pb-8 pt-2">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {/* Left Column - Hotel Image */}
-          <div className="flex items-center justify-center -ml-2 lg:-ml-4">
-            <div className="relative overflow-hidden shadow-lg" style={{ width: '624px', height: '380px' }}>
+          <div className="flex items-center justify-center -ml-2 lg:-ml-4 xl:-ml-8">
+            <div className="relative overflow-hidden shadow-lg w-full max-w-4xl" style={{ height: '480px' }}>
               <img
                 src="/Room1.jpeg"
                 alt="Luxury hotel room"
-                className="w-full h-full object-cover"
-                width="624"
-                height="390"
+                className="w-full h-full object-cover object-center"
+                style={{
+                  minWidth: '100%',
+                  minHeight: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center'
+                }}
               />
             </div>
           </div>
@@ -72,14 +82,14 @@ const AboutSection = () => {
           <div className="flex flex-col space-y-4" style={{ minHeight: '380px' }}>
             {/* First paragraph */}
             <p className="text-base text-gray-700 leading-relaxed" style={{ fontFamily: "'Roboto', sans-serif" }}>
-              Quam auctor vulputate rutrum sapien euismod et volutpat curabitur sit. Ultrices velit sagittis; lobortis
-              dapibus venenatis convallis. Nulla platea pulvinar justo platea tempus in elementum.
+              A veteran journalist with a long career spanning nearly half a century,  Mr M Baburaj is one of the pioneers of Development Journalism in Kerala. He served at Malayala Manorama in various capacities including Reporter, Editor, and Unit Head, before retiring as Senior Coordinating Editor and Unit Head at Kannur.
+
+
             </p>
 
             {/* Second paragraph */}
             <p className="text-base text-gray-700 leading-relaxed" style={{ fontFamily: "'Roboto', sans-serif" }}>
-              Libero netus hac litora curabitur vulputate euismod. Sollicitudin hendrerit nibh auctor himenaeos
-              curabitur ridiculus torquent. Elit aptent netus mi orci tristique pharetra accumsan.
+              In recognition of his excellence in development-oriented journalism, he has received several prestigious honours, including awards from the State Government and the Indian Medical Association.
             </p>
 
             {/* Testimonial with border and signature */}
@@ -87,16 +97,29 @@ const AboutSection = () => {
               <div className="w-px bg-[#C38154] flex-shrink-0"></div>
               <div className="pl-6">
                 <p className="text-base italic text-gray-700 leading-relaxed mb-6" style={{ fontFamily: "'Roboto', sans-serif" }}>
-                  Farm Fort is a haven of refined luxury, where timeless elegance meets modern sophistication. Nestled in a
-                  prime location, our resort offers breathtaking views, unparalleled comfort, and an ambiance of serenity.
+                  
+He has also served as a member of the Board of Studies in Journalism at Calicut University and Kannur University, as a member of the Zonal Railway Users’ Consultative Committee, and as the Founding President of Sahitham Residence Association.
+
+After retirement, he established the enterprises Farmrock Garden and Farm Fort on Farook College Road, where he currently serves as Chief Executive Officer.
                 </p>
 
                 {/* Signature and attribution */}
-            <div className="mt-6 space-y-2">
-              <p className="text-sm text-[#0F4D2F] kapakana-script">Baburaj Melethara</p>
-              <p className="text-xl font-normal text-black mt-2">Baburaj Melethara</p>
-              <p className="text-md text-[#C38154] mt-1" style={{ fontFamily: "'Roboto', sans-serif" }}>Founder of Farm Fort</p>
-            </div>
+                <div className="mt-6 flex items-center space-x-6">
+                  <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                    <img 
+                      src="/manager.jpeg" 
+                      alt="Baburaj Melethara"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm text-[#0F4D2F] kapakana-script">Baburaj Melethara</p>
+                    <p className="text-xl font-normal text-black mt-1">Baburaj Melethara</p>
+                    <p className="text-md text-[#056839]" style={{ fontFamily: "'Roboto', sans-serif" }}>
+                      Founder of Farm Fort
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
