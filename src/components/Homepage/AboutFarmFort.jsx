@@ -8,18 +8,15 @@ const AboutFarmFort = () => {
   const founderTitleRef = useRef(null);
   const [bgSize, setBgSize] = useState('cover');
   const [bgPosition, setBgPosition] = useState('center');
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updateBgStyles = () => {
       if (window.innerWidth < 768) {
         setBgSize('120% auto');
         setBgPosition('center 60%');
-        setIsMobile(true);
       } else {
         setBgSize('cover');
         setBgPosition('center');
-        setIsMobile(false);
       }
     };
 
@@ -75,73 +72,23 @@ const AboutFarmFort = () => {
   }, []);
 
   return (
-    <div className="w-full px-3 py-12 md:px-3" style={{ overflow: isMobile ? 'visible' : undefined, position: 'relative' }}>
+    <div className="w-full px-3 py-12">
 
       {/* Background Image - FIXED */}
-      <div className="relative w-full mx-auto h-[160vh] min-h-[900px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px] md:px-0 md:overflow-hidden" style={{ 
-        paddingLeft: isMobile ? '0.5rem' : '0.125rem', 
-        paddingRight: isMobile ? '0.5rem' : '0.125rem',
-        overflow: isMobile ? 'visible' : undefined 
-      }}>
-        {/* Desktop - Room Background */}
-        <div 
-          className="hidden md:block absolute inset-0 bg-cover bg-no-repeat w-full h-full"
-          style={{
-            backgroundImage: "url('/Room1.jpeg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-            WebkitBackgroundAttachment: 'fixed',
-            transform: 'translate3d(0,0,0)',
-            backfaceVisibility: 'hidden',
-            willChange: 'transform',
-          }}
-        />
-        
-        {/* Mobile - Manager Profile */}
-        <div className="md:hidden absolute flex flex-col items-center justify-center bg-white z-[5]" style={{ 
-          top: 'clamp(200px, 32vh, 240px)', 
-          bottom: 'clamp(150px, 22vh, 220px)', 
-          left: '0.5rem', 
-          right: '0.5rem', 
-          paddingTop: 'clamp(2.5rem, 6vh, 3rem)', 
-          paddingBottom: 'clamp(1rem, 3vh, 2rem)', 
-          paddingLeft: '1rem', 
-          paddingRight: '1rem',
-          minHeight: 'clamp(250px, 40vh, 350px)',
-          width: 'calc(100% - 1rem)',
-          boxSizing: 'border-box',
-          marginTop: '0'
-        }}>
-          <div className="rounded-full overflow-hidden mx-auto border-2 border-[#056839]/20 flex-shrink-0 shadow-sm" style={{ 
-            aspectRatio: '1/1', 
-            width: 'clamp(128px, 20vw, 192px)',
-            height: 'clamp(128px, 20vw, 192px)',
-            marginTop: '0',
-            marginBottom: '0',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            boxSizing: 'border-box',
-            display: 'block',
-            position: 'relative',
-            zIndex: 6
-          }}>
-            <img 
-              src="/manager.jpeg" 
-              alt="Manager"
-              className="w-full h-full object-cover"
-              style={{ objectPosition: 'center 30%', display: 'block' }}
-            />
-          </div>
-          <div className="text-center px-4 w-full max-w-xs" style={{ marginTop: 'clamp(1rem, 3vh, 1.5rem)' }}>
-            <p className="text-[#056839] font-semibold" style={{ fontSize: 'clamp(1.125rem, 4vw, 1.5rem)' }}>
-              Baburaj Meletara
-            </p>
-            <p className="text-[#056839]/80 mt-1" style={{ fontSize: 'clamp(0.875rem, 3vw, 1.125rem)' }}>
-              Founder of FarmFort
-            </p>
-          </div>
-        </div>
+      <div
+        className="relative w-full bg-cover bg-no-repeat mx-auto h-[140vh] min-h-[700px] md:h-[85vh] md:min-h-[700px] lg:h-[80vh] lg:min-h-[900px] px-0.5 md:px-0 overflow-hidden"
+        style={{
+          backgroundImage: "url('/Room1.jpeg')",
+          backgroundSize: bgSize,
+          backgroundPosition: bgPosition,
+          backgroundAttachment: 'fixed',
+          WebkitBackgroundAttachment: 'fixed',
+          transform: 'translate3d(0,0,0)',
+          backfaceVisibility: 'hidden',
+          willChange: 'transform',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
 
         {/* TOP LEFT BOX */}
         <div className="absolute top-0 left-0 w-full md:w-1/2 bg-white p-3 sm:p-4 z-10">
@@ -179,12 +126,12 @@ const AboutFarmFort = () => {
             ref={paragraphRef}
             className="text-gray-800 text-base sm:text-base leading-relaxed mb-4 opacity-0 italic m-0" style={{ fontFamily: '"Roboto", sans-serif' }}
           >
-           He has also served as a member of the Board of Studies in Journalism at Calicut University and Kannur University, as a member of the Zonal Railway Users' Consultative Committee, and as the Founding President of Sahitham Residence Association.
+           He has also served as a member of the Board of Studies in Journalism at Calicut University and Kannur University, as a member of the Zonal Railway Users’ Consultative Committee, and as the Founding President of Sahitham Residence Association.
 
 After retirement, he established the enterprises Farmrock Garden and Farm Fort on Farook College Road, where he currently serves as Chief Executive Officer.
           </p>
 
-          <div className="hidden md:block opacity-0" ref={founderNameRef}>
+          <div className="opacity-0" ref={founderNameRef}>
             <div className="w-20 h-20 rounded-full overflow-hidden mb-3">
               <img 
                 src="/manager.jpeg" 
