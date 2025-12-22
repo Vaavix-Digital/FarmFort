@@ -11,6 +11,15 @@ const Hero = () => {
         style={{
           backgroundImage: "url('/out1.jpeg')",
           backgroundAttachment: 'fixed',
+          WebkitBackfaceVisibility: 'hidden',
+          WebkitTransform: 'translateZ(0)',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          willChange: 'transform',
+          WebkitPerspective: 1000,
+          WebkitFontSmoothing: 'antialiased',
+          imageRendering: '-webkit-optimize-contrast',
+          WebkitTransformStyle: 'preserve-3d',
         }}
       >
         {/* Dark Overlay */}
