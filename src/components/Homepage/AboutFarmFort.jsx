@@ -501,7 +501,7 @@ const AboutFarmFort = () => {
 
           {/* ✅ MOBILE ONLY — IMAGE + NAME */}
           <div className="md:hidden flex flex-col items-center my-6">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md">
+            <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-white shadow-md">
               <img
                 src="/manager.jpeg"
                 alt="Founder"
