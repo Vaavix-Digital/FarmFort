@@ -437,6 +437,20 @@ const AboutFarmFort = () => {
         <div className="relative md:absolute md:top-0 md:left-0 
                         w-full md:w-1/2 bg-white p-4 z-10">
 
+          {/* Logo and Label */}
+          <div className="flex flex-col items-start gap-2 mb-4 p-0">
+            <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white">
+              <img 
+                src="/logo icon.png" 
+                alt="FarmFort Logo"
+                className="w-7 h-7 object-contain"
+              />
+            </div>
+            <p className="text-[#056839] text-base font-semibold" style={{ fontFamily: '\'Roboto\', sans-serif' }}>
+              About FarmFort
+            </p>
+          </div>
+
           <h1
             ref={headingRef}
             className="font-gilda text-2xl sm:text-3xl md:text-4xl
@@ -513,7 +527,10 @@ const AboutFarmFort = () => {
           </p>
 
           {/* Read More */}
-          <button className="text-[#056839] font-medium underline mb-6">
+          <button 
+            className="text-[#056839] font-medium underline mb-6"
+            style={{ fontFamily: '"Roboto", sans-serif' }}
+          >
             Read More
           </button>
 
