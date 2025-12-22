@@ -119,11 +119,14 @@ const SpecialPackages = () => {
             }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            <img
-              src={pkg.image}
-              alt={pkg.title}
-              className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
-            />
+            <div className="relative w-full h-full">
+              <img
+                src={pkg.image}
+                alt={pkg.title}
+                className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
+            </div>
             {/* Overlay */}
             <div className="absolute inset-0 p-6">
               <h3 className="text-white text-xl font-normal">{pkg.title}</h3>

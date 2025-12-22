@@ -11,14 +11,6 @@ const Hero = () => {
         style={{
           backgroundImage: "url('/out1.jpeg')",
           backgroundAttachment: 'fixed',
-          WebkitBackfaceVisibility: 'hidden',
-          transform: 'translate3d(0,0,0)',
-          WebkitTransform: 'translate3d(0,0,0)',
-          backfaceVisibility: 'hidden',
-          willChange: 'transform',
-          WebkitFontSmoothing: 'antialiased',
-          WebkitPerspective: 1000,
-          WebkitTransformStyle: 'preserve-3d',
         }}
       >
         {/* Dark Overlay */}
@@ -41,8 +33,6 @@ const Hero = () => {
               fontWeight: '600',
               lineHeight: '1.2',
               letterSpacing: '0.02em',
-              WebkitFontSmoothing: 'antialiased',
-              WebkitTextSizeAdjust: '100%',
             }}
           >
             <span className="hidden md:block">

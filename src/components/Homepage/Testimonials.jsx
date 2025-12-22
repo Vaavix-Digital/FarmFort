@@ -76,7 +76,15 @@ const Testimonials = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: 'fixed',
+        transform: 'translate3d(0,0,0)',
+        WebkitTransform: 'translate3d(0,0,0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        willChange: 'transform',
+        WebkitPerspective: 1000,
+        WebkitTransformStyle: 'preserve-3d',
+        WebkitFontSmoothing: 'antialiased',
       }}
     >
       {/* Dark Overlay */}
