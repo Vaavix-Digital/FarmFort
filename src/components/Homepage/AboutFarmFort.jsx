@@ -518,7 +518,7 @@ const AboutFarmFort = () => {
 
           {/* Paragraph 4 */}
           <p 
-            className="text-gray-800 text-base leading-relaxed italic mb-4"
+            className="text-gray-800 text-base leading-relaxed italic mb-2"
             style={{ fontFamily: '"Roboto", sans-serif' }}
           >
             After retirement, he established the enterprises Farmrock Garden and
@@ -528,7 +528,7 @@ const AboutFarmFort = () => {
 
           {/* Read More */}
           <button 
-            className="text-[#056839] font-medium underline mb-6"
+            className="text-[#056839] font-medium underline mb-1 md:mb-4"
             style={{ fontFamily: '"Roboto", sans-serif' }}
           >
             Read More

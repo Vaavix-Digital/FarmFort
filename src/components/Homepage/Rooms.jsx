@@ -67,9 +67,9 @@ const Rooms = () => {
 
   return (
     
-    <div className="min-h-screen bg-white font-['Roboto']">
-      <div className="pt-16 pb-10 text-center px-4">
-        <div className="flex flex-col items-center justify-center mb-6">
+    <div className="bg-white font-['Roboto']">
+      <div className="pt-8 md:pt-12 pb-6 md:pb-10 text-center px-4">
+        <div className="flex flex-col items-center justify-center mb-4 md:mb-6">
           <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
           <img 
             src="/logo icon.png" 
@@ -90,7 +90,7 @@ const Rooms = () => {
         >
           Where Every Room Is A Masterpiece Of Luxury
         </motion.h2>
-        <p className="max-w-4xl mx-auto text-gray-800 font-roboto text-sm md:text-base text-center mb-12">
+        <p className="max-w-4xl mx-auto text-gray-800 font-roboto text-sm md:text-base text-center mb-6 md:mb-12">
           Suspendisse senectus platea quam mauris; etiam molestie quis. Porttitor
           mollis cubilia, imperdiet lacinia praesent hac. Ligula nibh ullamcorper
           pellentesque facilisis adipiscing.
@@ -98,7 +98,7 @@ const Rooms = () => {
       </div>
 
       <motion.div 
-        className="max-w-7xl mx-auto px-4 pt-2 pb-10 md:py-10 grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10"
+        className="max-w-7xl mx-auto px-4 pt-0 pb-6 md:py-10 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-10"
         ref={ref}
         variants={slideUp}
         initial="hidden"
@@ -109,7 +109,7 @@ const Rooms = () => {
             <button
               key={room.id}
               onClick={() => setSelectedRoom(room.id)}
-              className={`group flex items-center justify-center py-4 w-full transition-all text-center relative ${
+              className={`group flex items-center justify-center py-2 md:py-4 w-full transition-all text-center relative ${
                 selectedRoom === room.id || room.id === "deluxe"
                   ? "text-[#056839] font-medium after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-[1px] after:bg-[#056839] after:transition-all"
                   : "text-gray-700 hover:text-[#056839]"
