@@ -54,12 +54,12 @@ const Rooms = () => {
   }, [controls, isInView]);
 
   const slideUp = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut"
       }
     }
@@ -68,9 +68,9 @@ const Rooms = () => {
   return (
     
     <div className="bg-white font-['Roboto']">
-      <div className="pt-8 md:pt-12 pb-6 md:pb-10 text-center px-4">
-        <div className="flex flex-col items-center justify-center mb-4 md:mb-6">
-          <div className="w-11 h-11 rounded-full border-2 border-[#056839] flex items-center justify-center p-1.5 bg-white mb-3">
+      <div className="pt-4 sm:pt-8 md:pt-12 pb-3 sm:pb-6 md:pb-10 text-center px-4">
+        <div className="flex flex-col items-center justify-center mb-3 md:mb-6">
+          <div className="w-10 h-10 rounded-full border-2 border-[#056839] flex items-center justify-center p-1 bg-white mb-2">
           <img 
             src="/logo icon.png" 
             alt="FarmFort Logo"
@@ -90,7 +90,7 @@ const Rooms = () => {
         >
           Where Every Room Is A Masterpiece Of Luxury
         </motion.h2>
-        <p className="max-w-4xl mx-auto text-gray-800 font-roboto text-sm md:text-base text-center mb-6 md:mb-12">
+        <p className="max-w-4xl mx-auto text-gray-800 font-roboto text-sm md:text-base text-center mb-3 sm:mb-6 md:mb-12">
           Suspendisse senectus platea quam mauris; etiam molestie quis. Porttitor
           mollis cubilia, imperdiet lacinia praesent hac. Ligula nibh ullamcorper
           pellentesque facilisis adipiscing.
@@ -138,7 +138,7 @@ const Rooms = () => {
           ))}
         </div>
 
-        <div className="md:col-span-3 flex flex-col lg:flex-row gap-10">
+        <div className="md:col-span-3 flex flex-col lg:flex-row gap-4 sm:gap-10">
           <div className="w-full lg:w-1/2 relative h-[400px] md:h-[550px] overflow-hidden">
             <img
               src={details.image}
@@ -147,9 +147,9 @@ const Rooms = () => {
             />
           </div>
 
-          <div className="w-full lg:w-1/2 space-y-6 pt-8">
-            <div className="space-y-3 w-full pr-0 lg:pr-6">
-              <h2 className="text-2xl font-normal text-gray-900 font-gilda mb-4 ">Room Overview</h2>
+          <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6 pt-6 sm:pt-8">
+            <div className="space-y-1.5 sm:space-y-3 w-full pr-0 lg:pr-6">
+              <h2 className="text-xl sm:text-2xl font-normal text-gray-900 font-gilda mb-3 sm:mb-4">Room Overview</h2>
               <p className="text-gray-800 text-base " style={{ fontFamily: '"Roboto", sans-serif' }}>
                 {details.overview}
               </p>
