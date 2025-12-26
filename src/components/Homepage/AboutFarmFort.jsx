@@ -474,7 +474,7 @@ const AboutFarmFort = () => {
 
           {/* Paragraph 2 — ROBOTO */}
           <p
-            className="text-gray-800 text-base leading-relaxed mb-4"
+            className="text-gray-800 text-base leading-relaxed -mb-1 md:mb-4"
             style={{ fontFamily: '"Roboto", sans-serif' }}
           >
             In recognition of his excellence in development-oriented journalism,
@@ -490,7 +490,7 @@ const AboutFarmFort = () => {
           {/* Paragraph 3 */}
           <p
             ref={paragraphRef}
-            className="text-gray-800 text-base leading-relaxed italic mb-6 opacity-0"
+            className="text-gray-800 text-base leading-relaxed italic mb-2 md:mb-6 opacity-0 -mt-2"
             style={{ fontFamily: '"Roboto", sans-serif' }}
           >
             He has also served as a member of the Board of Studies in Journalism
