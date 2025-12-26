@@ -9,47 +9,89 @@ const RoomDetails = () => {
   const { id } = useParams();
   const [room, setRoom] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
+  const [activeRoomVariant, setActiveRoomVariant] = useState(0);
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
-  
+  const [adults, setAdults] = useState(null);
+  const [children, setChildren] = useState(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   // Format date for display
   const formatDate = (dateString) => {
     if (!dateString) return '';
     const date = new Date(dateString);
     return format(date, 'MMM d, yyyy');
   };
-  const [adults, setAdults] = useState(null);
-  const [children, setChildren] = useState(null);
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  // Mock room data - replace with actual API call
-  useEffect(() => {
-    // Simulate API call
-    const mockRoom = {
-      id: id || 'deluxe',
+  // Room variants data
+  const roomVariants = [
+    {
+      id: 'deluxe',
       title: 'Deluxe Room',
-      description:'Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+      description: 'Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
       price: 299,
       size: '45 m²',
-      capacity: ' Adults, 1 Child',
+      capacity: '2 Adults, 1 Child',
       bedType: 'King Size',
       services: ['Free WiFi', 'Air Conditioning', 'Smart TV', 'Minibar', 'Safe', 'Hair Dryer'],
       images: [
         '/room.jpeg',
-              ],
-      amenities: [
-        { icon: 'wifi', name: 'Free WiFi' },
-        { icon: 'tv', name: 'Smart TV' },
-        { icon: 'coffee', name: 'Tea/Coffee Maker' },
-        { icon: 'snowflake', name: 'Air Conditioning' },
-        { icon: 'wine-glass-alt', name: 'Minibar' },
-        { icon: 'lock', name: 'Safe' },
-        { icon: 'shower', name: 'Rain Shower' },
-        { icon: 'bath', name: 'Bathtub' },
+        '/Room1.jpeg',
+        '/Room2.jpeg',
+        '/room3.jpeg',
+        '/roomss.jpeg',
       ],
-    };
-    setRoom(mockRoom);
+    },
+    {
+      id: 'suite',
+      title: 'Superior Room',
+      description: 'Spacious suite with premium amenities and stunning views.',
+      price: 499,
+      size: '75 m²',
+      capacity: '3 Adults, 2 Children',
+      bedType: 'King Size + Sofa Bed',
+      services: ['Free WiFi', 'Air Conditioning', 'Smart TV', 'Minibar', 'Safe', 'Hair Dryer', 'Jacuzzi'],
+      images: [
+        '/Room1.jpeg',
+        '/room.jpeg',
+        '/room3.jpeg',
+        '/roomss.jpeg',
+        '/Room2.jpeg',
+      ],
+    },
+    {
+      id: 'family',
+      title: 'Garden View Room',
+      description: 'Perfect for families with extra space and amenities.',
+      price: 399,
+      size: '60 m²',
+      capacity: '4 Adults, 2 Children',
+      bedType: '1 King + 2 Single Beds',
+      services: ['Free WiFi', 'Air Conditioning', 'Smart TV', 'Minibar', 'Safe', 'Hair Dryer', 'Extra Bed'],
+      images: [
+        '/room3.jpeg',
+        '/roomss.jpeg',
+        '/room.jpeg',
+        '/Room1.jpeg',
+        '/Room2.jpeg',
+      ],
+    },
+  ];
+
+  // Set active room based on URL or default to first variant
+  useEffect(() => {
+    const roomId = id || 'deluxe';
+    const selectedRoom = roomVariants.find(room => room.id === roomId) || roomVariants[0];
+    setRoom(selectedRoom);
+    setActiveRoomVariant(roomVariants.findIndex(r => r.id === roomId) || 0);
   }, [id]);
+
+  // Handle room variant change
+  const handleRoomVariantChange = (index) => {
+    setActiveRoomVariant(index);
+    setRoom(roomVariants[index]);
+    setActiveImage(0); // Reset to first image when changing room type
+  };
 
   if (!room) {
     return <div className="min-h-screen bg-gray-50">Loading...</div>;
@@ -72,7 +114,7 @@ const RoomDetails = () => {
             {/* Page Title Section */}
             <div className="container mx-auto px-4 h-[calc(70vh-80px)] flex flex-col justify-center items-start text-left text-white relative z-20">
               <div className="max-w-4xl">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Deluxe Room</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">{room.title}</h1>
                 <div className="flex items-center text-sm md:text-base font-normal">
                   <Link to="/" className="hover:text-amber-400 transition-colors" style={{ fontFamily: '"Roboto", sans-serif' }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
@@ -181,11 +223,21 @@ const RoomDetails = () => {
           <div className="flex-1">
             {/* Image */}
             <div className="relative h-[350px] lg:h-[500px] mb-8">
-              <img 
-                src={room.images[0]} 
-                alt={room.title}
-                className="w-full h-full object-cover"
-              />
+                <img 
+                  src={room.images[activeImage]} 
+                  alt={room.title}
+                  className="w-full h-full object-cover cursor-pointer"
+                />
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                  {room.images.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImage(idx)}
+                      className={`w-3 h-3 rounded-full ${idx === activeImage ? 'bg-white' : 'bg-white/50'}`}
+                      aria-label={`View image ${idx + 1}`}
+                    />
+                  ))}
+                </div>
             </div>
 
             {/* Room Overview Section */}
@@ -262,7 +314,47 @@ const RoomDetails = () => {
                  Sem facilisis non duis ornare felis; tortor cubilia. Morbi imperdiet vulputate; urna vitae laoreet hac ex. Urna rhoncus mi ultricies, aptent suscipit diam habitant! Aconubia mus dignissim duis rhoncus cubilia; urna senectus maximus.
                 </p>
                 </div>
-               <h2 className="font-gilda text-2xl md:text-xl lg:text-2xl mb-4">Location</h2>
+
+                {/* Gallery Section */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 mt-10">
+                  {room.images.map((image, index) => (
+                    <div 
+                      key={index} 
+                      className={`group relative overflow-hidden rounded-lg aspect-square cursor-pointer ${activeImage === index ? 'ring-2 ring-[#b8876b]' : ''}`}
+                      onClick={() => setActiveImage(index)}
+                    >
+                      <img 
+                        src={image} 
+                        alt={`${room.title} view ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Room Variants */}
+                <div className="flex space-x-4 mb-10">
+                  {roomVariants.map((variant, index) => (
+                    <button
+                      key={variant.id}
+                      onClick={() => handleRoomVariantChange(index)}
+                      className={`px-4 py-2 rounded-md transition-colors ${
+                        activeRoomVariant === index 
+                          ? 'bg-[#0F4D2F] text-white' 
+                          : 'bg-gray-100 hover:bg-gray-200'
+                      }`}
+                    >
+                      {variant.title}
+                    </button>
+                  ))}
+                </div>
+
+                <h2 className="font-gilda text-2xl md:text-xl lg:text-2xl mb-4">Location</h2>
               <div className="w-full overflow-hidden shadow-lg mb-6">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d251453.21142616193!2d76.32977919999999!3d10.020454399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3ba65bf066dad763%3A0x958110a52b252d8d!2sFarook%20College%20Road%2C%20Chungam%2C%20Ramanattukara%2C%20Via%2C%20Feroke%2C%20Kozhikode%2C%20Kerala%20673632!3m2!1d11.184770499999999!2d75.8468286!5e0!3m2!1sen!2sin!4v1765867308627!5m2!1sen!2sin" 
